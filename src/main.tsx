@@ -32,6 +32,9 @@ const rotas = createBrowserRouter([
     ],
   },
   {
+//Criar rota de login separada para utilizar outro header
+  },
+  {
     path: '/',
     element: <Layout />,
     children: [
