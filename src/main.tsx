@@ -8,7 +8,7 @@ import Detalhes from './Detalhes.tsx'
 import MinhasReservas from './MinhasReservas.tsx'
 
 // Rotas do Administrador
-//import AdminLayout from './admin/AdminLayout.tsx'
+import AdminLayout from './admin/AdminLayout.tsx'
 import AdminLogin from './admin/AdminLogin.tsx'   
 //import AdminDashboard from './admin/AdminDashboard.tsx'
 
@@ -23,8 +23,9 @@ const rotas = createBrowserRouter([
   },
   {
     path: "/admin",
-    //element: <AdminLayout />,  // layout principal do admin com menus e outlet
+    element: <AdminLayout />,  // layout principal do admin com menus e outlet
     children: [
+      { index: true, element: <AdminLayout /> }
       //{ index: true, element: <AdminDashboard /> },          // rota /admin
       // { path: "carros", element: <AdminCarros /> },          // rota /admin/carros
       // { path: "carros/novo", element: <AdminNovoCarro /> },  // ...
