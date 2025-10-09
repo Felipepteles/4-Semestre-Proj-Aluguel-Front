@@ -6,12 +6,26 @@ import App from './App.tsx'
 import Login from './Login.tsx'
 import Detalhes from './Detalhes.tsx'
 import MinhasReservas from './MinhasReservas.tsx'
-
-
+import AdminLogin from './admin/AdminLogin.tsx';   
+import AdminLayout from './admin/AdminLayout.tsx';
+import AdminDashboard from './admin/AdminDashboard.tsx';    
 import Layout from './Layout.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const rotas = createBrowserRouter([
+  {
+    path: "/admin/login",
+    element: <AdminLogin />
+  },
+  {
+    path: "/admin",
+    element: <AdminLayout />,
+    children: [
+      {
+        index: true, element: <AdminDashboard />
+      }
+    ]
+  },
   {
     path: '/',
     element: <Layout />,
