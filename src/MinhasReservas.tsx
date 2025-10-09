@@ -40,11 +40,11 @@ export default function Reservas() {
                 <p><i>Descrição: {(reservas.descricao)}</i></p>
             </td>
             <td>
-              <p className='mt-3'>
+                <p className='mt-3'>
                     R$: {Number(reservas.ferramenta.preco).toLocaleString("pt-br", { minimumFractionDigits: 2 })}</p>
             </td>
             <td className="px-6 py-4">
-                    <i>{reservas.ferramenta.status}</i>
+                <i>{reservas.ferramenta.status}</i>
             </td>
         </tr>
     ))
@@ -56,7 +56,7 @@ export default function Reservas() {
 
             {reservas.length == 0 ?
                 <h2 className="mb-4 mt-10 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white">
-                   &nbsp;&nbsp; Ah... Você ainda não fez reservas para as nossas Ferramentas. 🙄
+                    &nbsp;&nbsp; Ah... Você ainda não fez reservas para as nossas Ferramentas. 🙄
                 </h2>
                 :
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -71,7 +71,7 @@ export default function Reservas() {
                             <th scope="col" className="px-6 py-3">
                                 Reservas
                             </th>
-                             <th scope="col" className="px-6 py-3">
+                            <th scope="col" className="px-6 py-3">
                                 Descrição
                             </th>
                             <th scope="col" className="px-6 py-3">

@@ -10,7 +10,9 @@ import MinhasReservas from './MinhasReservas.tsx'
 // Rotas do Administrador
 import AdminLayout from './admin/AdminLayout.tsx'
 import AdminLogin from './admin/AdminLogin.tsx'   
-//import AdminDashboard from './admin/AdminDashboard.tsx'
+import AdminDashboard from './admin/AdminDashboard.tsx'
+import AdminFerramentas from './admin/AdminFerramentas.tsx';  
+import AdminReservas from './admin/AdminReservas.tsx';  
 
 
 import Layout from './Layout.tsx'
@@ -25,15 +27,11 @@ const rotas = createBrowserRouter([
     path: "/admin",
     element: <AdminLayout />,  // layout principal do admin com menus e outlet
     children: [
-      { index: true, element: <AdminLayout /> }
-      //{ index: true, element: <AdminDashboard /> },          // rota /admin
-      // { path: "carros", element: <AdminCarros /> },          // rota /admin/carros
-      // { path: "carros/novo", element: <AdminNovoCarro /> },  // ...
-      // { path: "propostas", element: <AdminPropostas /> },  // ...
+      { index: true, element: <AdminDashboard /> },          // rota /admin
+      { path: "ferramentas", element: <AdminFerramentas /> },          // rota /admin/ferramentas
+      { path: "reservas", element: <AdminReservas /> },  // ...
+      // { path: "ferramentas/novo", element: <AdminNovaFerramenta /> },  // ...
     ],
-  },
-  {
-//Criar rota de login separada para utilizar outro header
   },
   {
     path: '/',

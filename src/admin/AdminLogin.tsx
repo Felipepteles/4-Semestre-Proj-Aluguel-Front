@@ -22,13 +22,13 @@ export default function AdminLogin() {
   }, [])
 
   async function verificaLogin(data: Inputs) {
-    const response = await fetch(`${apiUrl}/admins/login`, {
+    const response = await fetch(`${apiUrl}/adminLogin`, {
       method: "POST",
       headers: { "Content-type": "Application/json" },
       body: JSON.stringify({ email: data.email, senha: data.senha })
     })
 
-    // console.log(response)
+    console.log(response) // para teste
     if (response.status == 200) {
       const admin = await response.json()
       logaAdmin(admin)
