@@ -3,4 +3,6 @@ export type AdminType = {
     nome: string
     email: string
     senha: string
+    token: string
+    nivel: number
 }
