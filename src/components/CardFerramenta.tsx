@@ -3,9 +3,9 @@ import type { FerramentaType } from "../utils/FerramentaType"
 
 export function CardFerramenta({ferramenta}: {ferramenta: FerramentaType}) {
     return (
-        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-            <img className="w-2xs h-2/4 rounded-t-lg mb-7" src={ferramenta.foto} alt="Foto" />
-            <div className="p-5">
+        <div className="flex flex-col max-w-sm w-full pt-5 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+            <img className="w-2xs h-2/4 self-center rounded-t-lg mb-7" src={ferramenta.foto} alt="Foto" />
+            <div className="p-2">
               <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
                     {ferramenta?.marca.nome}
                 </h5>
