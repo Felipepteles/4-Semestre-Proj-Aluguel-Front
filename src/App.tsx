@@ -27,7 +27,7 @@ export default function App() {
         <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
           Ferramenta <span className="underline underline-offset-3 decoration-8 decoration-orange-400 dark:decoration-orange-600">em destaque</span>
         </h1>
-        <div className="flex gap-3">
+        <div className="flex gap-3 flex-wrap justify-around">
           {listaFerramentas}
         </div>
       </div>
