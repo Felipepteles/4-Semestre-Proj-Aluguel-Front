@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useClienteStore } from "./context/ClienteContext"
 import { toast } from 'sonner'
 import { useForm } from "react-hook-form"
+import { Datepicker } from "flowbite-react";
 
 const apiUrl = import.meta.env.VITE_API_URL
 
@@ -14,7 +15,10 @@ type Inputs = {
 export default function Detalhes() {
   const params = useParams()
 
+  const [dataInicio, setDataInicio] = useState<Date | null>(new Date())
+  const [dataFim, setDataFim] = useState<Date | null>(null)
   const [ferramenta, setFerramenta] = useState<FerramentaType>()
+
   const { cliente } = useClienteStore()
 
   const { register, handleSubmit, reset } = useForm<Inputs>()
@@ -85,6 +89,26 @@ export default function Detalhes() {
                   required
                   {...register("descricao")}>
                 </textarea>
+                <div className="flex items-center mb-2">
+                  <Datepicker
+                    key="primeiro"
+                    language="pt-BR"
+                    value={dataInicio}
+                    onChange={(date) => {
+                      setDataInicio(date)
+                      setDataFim(date)
+                    }}
+                    minDate={new Date()}
+                  />
+                  <span className="mx-4 text-gray-500">até</span>
+                  <Datepicker
+                    key={dataInicio?.toISOString()}
+                    language="pt-BR"
+                    value={dataFim}
+                    onChange={(date) => setDataFim(date)}
+                    minDate={dataInicio!}
+                  />
+                </div>
                 <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Reservar Ferramenta</button>
               </form>
 

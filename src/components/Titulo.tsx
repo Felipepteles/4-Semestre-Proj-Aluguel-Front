@@ -8,7 +8,7 @@ export default function Titulo() {
     const navigate = useNavigate()
 
 
-     function clienteSair() {
+    function clienteSair() {
         if (confirm("Confirma saída do sistema?")) {
             deslogaCliente()
             if (localStorage.getItem("clienteKey")) {
@@ -21,7 +21,7 @@ export default function Titulo() {
         <nav className="border-orange-500 bg-orange-400 dark:bg-orange-800 dark:border-orange-700">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img src="./toolkit.svg" className="h-12" alt="Logo Caixa de Ferramentas" />
+                    <img src="/toolkit.svg" className="h-12" alt="Logo Caixa de Ferramentas" />
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                         Caixa de Ferramentas
                     </span>
