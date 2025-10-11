@@ -14,7 +14,7 @@ type Inputs = {
   preco: number
   marcaId: number
   categoriaId: number
-  adminId: string  
+  adminId: string
 }
 
 export default function AdminNovoCarro() {
@@ -75,7 +75,7 @@ export default function AdminNovoCarro() {
         method: "POST",
         headers: {
           "Content-type": "application/json",
-            Authorization: `Bearer ${admin.token}`
+          Authorization: `Bearer ${admin.token}`
         },
         body: JSON.stringify(novaFerramenta)
       },
@@ -114,6 +114,13 @@ export default function AdminNovoCarro() {
             >
               {optionsMarca}
             </select>
+          </div>
+        </div>
+
+        <div className="grid gap-6 mb-3 md:grid-cols-2">
+          <div className="mb-3">
+            <label htmlFor="marcaId" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Categoria</label>
             <select id="categoriaId"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required
               {...register("categoriaId")}
@@ -121,7 +128,6 @@ export default function AdminNovoCarro() {
               {optionsCategoria}
             </select>
           </div>
-          
         </div>
         <div className="grid gap-6 mb-3 md:grid-cols-2">
           <div className="mb-3">
