@@ -11,6 +11,7 @@ import AdminLayout from './admin/AdminLayout.tsx';
 import AdminCadAdmin from './admin/AdminCadAdmin.tsx'; 
 import AdminNovoAdmin from './admin/AdminNovoAdmin.tsx';
 import AdminDashboard from './admin/AdminDashboard.tsx';    
+import AdminCtrlCliente from './admin/AdminCtrlCliente.tsx';
 import AdminFerramentas from './admin/AdminFerramentas.tsx';
 import AdminNovaFerramenta from './admin/AdminNovaFerramenta.tsx';
 
@@ -28,6 +29,7 @@ const rotas = createBrowserRouter([
     children: [
       {index: true, element: <AdminDashboard />},
       {path: "cadAdmin", element: <AdminCadAdmin /> },
+      {path: "clientes", element: <AdminCtrlCliente /> },
       {path: "cadAdmin/novo", element: <AdminNovoAdmin />},
       {path: "ferramentas", element: <AdminFerramentas />},
       {path: "ferramentas/novo", element: <AdminNovaFerramenta />}
