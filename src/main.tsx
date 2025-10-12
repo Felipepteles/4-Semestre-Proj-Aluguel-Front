@@ -5,9 +5,11 @@ import './index.css'
 import App from './App.tsx'
 import Login from './Login.tsx'
 import Detalhes from './Detalhes.tsx'
-import MinhasReservas from './MinhasReservas.tsx'
+import CadCliente from './CadCliente.tsx'
+import MinhasReservas from './MinhasReservas.tsx';
 import AdminLogin from './admin/AdminLogin.tsx';   
 import AdminLayout from './admin/AdminLayout.tsx';
+import AdminReservas from './admin/AdminReservas.tsx';
 import AdminCadAdmin from './admin/AdminCadAdmin.tsx'; 
 import AdminNovoAdmin from './admin/AdminNovoAdmin.tsx';
 import AdminDashboard from './admin/AdminDashboard.tsx';    
@@ -28,6 +30,7 @@ const rotas = createBrowserRouter([
     element: <AdminLayout />,
     children: [
       {index: true, element: <AdminDashboard />},
+      {path: "reservas", element: <AdminReservas />},
       {path: "cadAdmin", element: <AdminCadAdmin /> },
       {path: "clientes", element: <AdminCtrlCliente /> },
       {path: "cadAdmin/novo", element: <AdminNovoAdmin />},
@@ -41,8 +44,9 @@ const rotas = createBrowserRouter([
     children: [
       { index: true, element: <App /> },
       { path: 'login', element: <Login /> },
-      { path: 'detalhes/:ferramentaId', element: <Detalhes /> },
+      { path: 'cadCliente', element: <CadCliente /> },
       { path: 'minhasReservas', element: <MinhasReservas /> },
+      { path: 'detalhes/:ferramentaId', element: <Detalhes /> },
     ],
   },
 ])

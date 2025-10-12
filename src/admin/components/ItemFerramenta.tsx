@@ -28,8 +28,8 @@ export default function ItemFerramenta({ ferramenta, ferramentas, setFerramentas
       )
 
       if (response.status == 200) {
-        const ferramenta2 = ferramentas.filter(x => x.id != ferramenta.id)
-        setFerramentas(ferramenta2)
+        const ferramentas2 = ferramentas.filter(x => x.id != ferramenta.id)
+        setFerramentas(ferramentas2)
         alert("Carro excluído com sucesso")
       } else {
         alert("Erro... Carro não foi excluído")

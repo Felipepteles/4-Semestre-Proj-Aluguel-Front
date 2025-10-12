@@ -44,7 +44,9 @@ export default function Detalhes() {
         clienteId: cliente.id,
         ferramentaId: Number(params.ferramentaId),
         descricao: data.descricao,
-        valor: Number(params.ferramentaId)
+        valor: Number(params.ferramentaId),
+        dataInicio: dataInicio,
+        dataFim: dataFim
       })
     })
 
