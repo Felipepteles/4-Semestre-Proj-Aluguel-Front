@@ -1,0 +1,114 @@
+import { useForm } from "react-hook-form"
+import { useNavigate } from "react-router-dom"
+import { toast } from "sonner"
+import { useClienteStore } from "./context/ClienteContext"
+
+type Inputs = {
+  logradouro: string
+  num: number
+  bairro: string
+  cidade: string
+  estado: string
+  cep: number
+  tel1: number
+  tel2: number
+  clienteId: string
+}
+
+const apiUrl = import.meta.env.VITE_API_URL
+const { cliente } = useClienteStore()
+
+export default function CompleteCadCliente() {
+  const { register, handleSubmit } = useForm<Inputs>()
+  const navigate = useNavigate()
+
+  async function editaCliente(data: Inputs) {
+
+    const response = await
+      fetch(`${apiUrl}/enderecos`, {
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+        body: JSON.stringify({
+          logradouro: data.logradouro,
+          num: data.num,
+          bairro: data.bairro,
+          cidade: data.cidade,
+          estado: data.estado,
+          cep: data.cep,
+          clienteId: cliente.id
+        })
+      })
+
+    const response2 = await
+      fetch(`${apiUrl}/telefones`, {
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+        body: JSON.stringify({
+          tel1: data.tel1,
+          tel2: data.tel2,
+          clienteId: cliente.id
+        })
+      })
+
+    console.log(response, response2)
+    if (response.status == 201 && response2.status == 201) {
+      toast.success("Ok! Cadastro realizado com sucesso...")
+      navigate("/login")
+    } else {
+      toast.error("Erro... Não foi possível realizar o cadastro")
+    }
+  }
+
+  return (
+    <section className="bg-gray-50 dark:bg-gray-900">
+      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+              COmplete o seu cadastro
+            </h1>
+            <form className="space-y-4 md:space-y-6"
+              onSubmit={handleSubmit(editaCliente)}>
+              <div>
+                <label htmlFor="logradouro" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Logradouro:</label>
+                <input type="text" id="logradouro" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ex.: Rua Guarana com Rolha" required
+                  {...register("logradouro")} />
+              </div>
+              <div>
+                <label htmlFor="num" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Número:</label>
+                <input type="num" id="num" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ex.: 123 ou 123A" required
+                  {...register("num")} />
+              </div>
+              <div>
+                <label htmlFor="bairro" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bairro:</label>
+                <input type="text" id="bairro" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nome do Bairro" required
+                  {...register("bairro")} />
+              </div>
+              <div>
+                <label htmlFor="cidade" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cidade:</label>
+                <input type="text" id="cidade" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nome da Cidade" required
+                  {...register("cidade")} />
+              </div>
+              <div>
+                <label htmlFor="estado" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Estado:</label>
+                <input type="text" id="estado" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nome do Estado" required
+                  {...register("estado")} />
+              </div>
+              <div>
+                <label htmlFor="tel1" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefone 1:</label>
+                <input type="text" id="tel1" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ex.: 53999999999" required
+                  {...register("tel1")} />
+              </div>
+              <div>
+                <label htmlFor="tel2" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefone 2:</label>
+                <input type="text" id="tel2" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ex.: 53999999999" required
+                  {...register("tel2")} />
+              </div>
+              <button type="submit" className="w-full text-white bg-amber-600 hover:bg-amber-700 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-amber-400 dark:hover:bg-amber-500 dark:focus:ring-amber-800">Finalizar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
