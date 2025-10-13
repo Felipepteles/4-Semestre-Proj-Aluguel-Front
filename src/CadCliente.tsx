@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { toast } from "sonner"
 
 type Inputs = {
@@ -14,6 +14,7 @@ const apiUrl = import.meta.env.VITE_API_URL
 
 export default function CadCliente() {
   const { register, handleSubmit } = useForm<Inputs>()
+  const navigate = useNavigate()
 
   async function cadastraCliente(data: Inputs) {
 
@@ -37,8 +38,7 @@ export default function CadCliente() {
     console.log(response)
     if (response.status == 201) {
       toast.success("Ok! Cadastro realizado com sucesso...")
-      // carrega a página principal, após login do cliente
-      // navigate("/login")
+      navigate("/login")
     } else {
       toast.error("Erro... Não foi possível realizar o cadastro")
     }
@@ -55,7 +55,7 @@ export default function CadCliente() {
             <form className="space-y-4 md:space-y-6"
               onSubmit={handleSubmit(cadastraCliente)}>
               <div>
-                <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome:</label>
+                <label htmlFor="nome" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome:</label>
                 <input type="text" id="nome" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Seu nome completo" required
                   {...register("nome")} />
               </div>

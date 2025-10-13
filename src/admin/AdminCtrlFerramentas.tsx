@@ -1,32 +1,36 @@
+import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
-
-import ItemReserva from './components/ItemReserva'
-import type { ReservaType } from "../utils/ReservaType"
+import ItemFerramenta from './components/ItemFerramenta'
+import type { FerramentaType } from "../utils/FerramentaType"
 
 const apiUrl = import.meta.env.VITE_API_URL
 
-export default function AdminReservas() {
-  const [reservas, setReservas] = useState<ReservaType[]>([])
+export default function AdminFerramentas() {
+  const [ferramentas, setFerramentas] = useState<FerramentaType[]>([])
 
   useEffect(() => {
-    async function getReservas() {
-      const response = await fetch(`${apiUrl}/reservas`)
+    async function getFerramentas() {
+      const response = await fetch(`${apiUrl}/ferramentas`)
       const dados = await response.json()
-      setReservas(dados)
+      setFerramentas(dados)
     }
-    getReservas()
+    getFerramentas()
   }, [])
 
-  const listaReservas = reservas.map(reserva => (
-    <ItemReserva key={reserva.id} reserva={reserva} reservas={reservas} setReservas={setReservas} />
+  const listaFerramentas = ferramentas.map(ferramenta => (
+    <ItemFerramenta key={ferramenta.id} ferramenta={ferramenta} ferramentas={ferramentas} setFerramentas={setFerramentas} />
   ))
 
   return (
     <div className='m-4 mt-24'>
       <div className='flex justify-between'>
         <h1 className="mb-4 text-2xl font-bold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
-          Contrle de Reservas
+          Controle de Ferramentas
         </h1>
+        <Link to="/admin/ferramentas/novo" 
+          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-md px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+          Nova Ferramenta
+        </Link>
       </div>
 
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -37,25 +41,16 @@ export default function AdminReservas() {
                 Foto
               </th>
               <th scope="col" className="px-6 py-3">
-                Ferramenta
+                Modelo da Ferramenta
               </th>
               <th scope="col" className="px-6 py-3">
-                Cliente
+                Marca
               </th>
               <th scope="col" className="px-6 py-3">
-                Descrição
+                Ano
               </th>
               <th scope="col" className="px-6 py-3">
-                Data Início
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Data Fim
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Status
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Valor R$
+                Preço R$
               </th>
               <th scope="col" className="px-6 py-3">
                 Ações
@@ -63,7 +58,7 @@ export default function AdminReservas() {
             </tr>
           </thead>
           <tbody>
-            {listaReservas}
+            {listaFerramentas}
           </tbody>
         </table>
       </div>

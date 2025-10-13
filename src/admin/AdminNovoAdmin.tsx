@@ -1,5 +1,5 @@
-import { useForm } from "react-hook-form"
 import { toast } from "sonner"
+import { useForm } from "react-hook-form"
 // import { useState, useEffect } from "react"
 // import type { AdminType } from "../utils/AdminType"
 import { useAdminStore } from "./context/AdminContext"
@@ -10,12 +10,13 @@ type Inputs = {
   nome: string
   email: string
   senha: string
+  senha2: string
   token: string
   nivel: number
   adminId: string
 }
 
-export default function AdminNovoCarro() {
+export default function AdminNovoAdmin() {
   const { admin } = useAdminStore()
 
   const {
@@ -26,13 +27,9 @@ export default function AdminNovoCarro() {
 
   async function incluirAdmin(data: Inputs) {
 
-    const novoAdmin: Inputs = {
-      nome: data.nome,
-      email: data.email,
-      senha: data.senha,
-      token: data.token,
-      nivel: Number(data.nivel),
-      adminId: admin.id
+    if (data.senha != data.senha2) {
+      toast.error("Erro... Senha e Confirme Senha precisam ser iguais")
+      return
     }
 
     const response = await fetch(`${apiUrl}/admins`,
@@ -42,7 +39,14 @@ export default function AdminNovoCarro() {
           "Content-type": "application/json",
           Authorization: `Bearer ${admin.token}`
         },
-        body: JSON.stringify(novoAdmin)
+        body: JSON.stringify({
+          nome: data.nome,
+          email: data.email,
+          senha: data.senha,
+          token: data.token,
+          nivel: Number(data.nivel),
+          adminId: admin.id
+        })
       },
     )
 
@@ -65,7 +69,7 @@ export default function AdminNovoCarro() {
           <label htmlFor="nome" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Nome do Administrador</label>
           <input type="text" id="nome"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nome completo" required
             {...register("nome")}
           />
         </div>
@@ -73,16 +77,24 @@ export default function AdminNovoCarro() {
           <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             E-Mail</label>
           <input type="email" id="email"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="nome@gmail.com" required
             {...register("email")}
           />
         </div>
         <div className="mb-3">
           <label htmlFor="senha" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Senha</label>
-          <input type="key" id="senha"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required
+          <input type="password" id="password"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="••••••••" required
             {...register("senha")}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="confirm-password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Confirme a Senha</label>
+          <input type="password" id="confirm-password"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="••••••••" required
+            {...register("senha2")}
           />
         </div>
         <div className="grid gap-6 mb-3 md:grid-cols-2">

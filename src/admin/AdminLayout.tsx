@@ -1,11 +1,9 @@
-import { Outlet } from 'react-router-dom'
-import { useEffect } from 'react'
 import { Toaster } from 'sonner'
-import { useAdminStore } from "./context/AdminContext"
-
+import { useEffect } from 'react'
+import { Outlet } from 'react-router-dom'
 import { useNavigate } from "react-router-dom"
-
 import { Titulo } from './components/Titulo.tsx'
+import { useAdminStore } from "./context/AdminContext"
 import { MenuLateral } from './components/MenuLateral.tsx'
 
 export default function AdminLayout() {

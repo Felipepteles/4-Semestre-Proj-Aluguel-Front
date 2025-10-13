@@ -9,13 +9,13 @@ import CadCliente from './CadCliente.tsx'
 import MinhasReservas from './MinhasReservas.tsx';
 import AdminLogin from './admin/AdminLogin.tsx';   
 import AdminLayout from './admin/AdminLayout.tsx';
-import AdminReservas from './admin/AdminReservas.tsx';
-import AdminCadAdmin from './admin/AdminCadAdmin.tsx'; 
+import AdminCtrlAdmin from './admin/AdminCtrlAdmin.tsx'; 
 import AdminNovoAdmin from './admin/AdminNovoAdmin.tsx';
 import AdminDashboard from './admin/AdminDashboard.tsx';    
 import AdminCtrlCliente from './admin/AdminCtrlCliente.tsx';
-import AdminFerramentas from './admin/AdminFerramentas.tsx';
+import AdminCtrlReservas from './admin/AdminCtrlReservas.tsx';
 import AdminNovaFerramenta from './admin/AdminNovaFerramenta.tsx';
+import AdminCtrlFerramentas from './admin/AdminCtrlFerramentas.tsx';
 
 import Layout from './Layout.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
@@ -30,11 +30,11 @@ const rotas = createBrowserRouter([
     element: <AdminLayout />,
     children: [
       {index: true, element: <AdminDashboard />},
-      {path: "reservas", element: <AdminReservas />},
-      {path: "cadAdmin", element: <AdminCadAdmin /> },
+      {path: "cadAdmin", element: <AdminCtrlAdmin /> },
       {path: "clientes", element: <AdminCtrlCliente /> },
+      {path: "reservas", element: <AdminCtrlReservas />},
       {path: "cadAdmin/novo", element: <AdminNovoAdmin />},
-      {path: "ferramentas", element: <AdminFerramentas />},
+      {path: "ferramentas", element: <AdminCtrlFerramentas />},
       {path: "ferramentas/novo", element: <AdminNovaFerramenta />}
     ]
   },

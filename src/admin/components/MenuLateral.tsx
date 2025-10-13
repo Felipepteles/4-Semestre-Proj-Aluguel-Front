@@ -29,11 +29,11 @@ export function MenuLateral() {
             </Link>
           </li>
           <li>
-            <Link to="/admin/ferramentas" className="flex items-center p-2">
+            <Link to="/admin/cadAdmin" className="flex items-center p-2 cursor-pointer">
               <span className="h-5 text-gray-600 text-2xl">
-                <FaCarSide />
+                <FaRegUser />
               </span>
-              <span className="ms-2 mt-1">Cadastro de Ferramentas</span>
+              <span className="ms-2 mt-1">Controle de Admins</span>
             </Link>
           </li>
           <li>
@@ -42,6 +42,14 @@ export function MenuLateral() {
                 <FaUsers />
               </span>
               <span className="ms-2 mt-1">Controle de Clientes</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/admin/ferramentas" className="flex items-center p-2">
+              <span className="h-5 text-gray-600 text-2xl">
+                <FaCarSide />
+              </span>
+              <span className="ms-2 mt-1">Controle de Ferramentas</span>
             </Link>
           </li>
           <li>
@@ -59,14 +67,6 @@ export function MenuLateral() {
               </span>
               <span className="ms-2 mt-1" onClick={adminSair}>Sair do Sistema</span>
             </span>
-          </li>
-          <li>
-            <Link to="/admin/cadAdmin" className="flex items-center p-2 cursor-pointer">
-              <span className="h-5 text-gray-600 text-2xl">
-                <FaRegUser />
-              </span>
-              <span className="ms-2 mt-1">Cadastro de Admins</span>
-            </Link>
           </li>
         </ul>
       </div>
