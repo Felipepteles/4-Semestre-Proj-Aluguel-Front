@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { useClienteStore } from "../context/ClienteContext"
 import { useNavigate } from "react-router-dom"
+import { Avatar, Dropdown, DropdownDivider, DropdownHeader, DropdownItem } from "flowbite-react";
 
 
 export default function Titulo() {
@@ -32,21 +33,33 @@ export default function Titulo() {
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
                     </svg>
                 </button>
+
                 <div className="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
                     <ul className="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
-                        <li>
+                        <li className="flex items-center gap-4">
                             {cliente.id ?
                                 <>
-                                    <span className="text-black">
-                                        {cliente.nome}
-                                    </span>&nbsp;&nbsp;
-                                    <Link to="/minhasReservas" className="text-white font-bold bg-gray-600 hover:bg-gray-700 focus:ring-2 focus:outline-none focus:ring-gray-400 rounded-lg text-sm w-full sm:w-auto px-3 py-2 text-center dark:bg-gray-500 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
-                                        Minhas Reservas
-                                    </Link>&nbsp;&nbsp;
-                                    <span className="cursor-pointer font-bold text-gray-600"
-                                        onClick={clienteSair}>
-                                        Sair
-                                    </span>
+                                <span className="block text-sm">{cliente.nome}</span>
+                                    <Dropdown
+                                        label={<Avatar alt="User settings" img="/user.svg" className="cursor-pointer" rounded />}
+                                        arrowIcon={false}
+                                        inline
+                                    >
+                                        <DropdownHeader>
+                                            <span className="block truncate text-sm font-medium">{cliente.email}</span>
+                                        </DropdownHeader>
+                                        <DropdownItem>
+                                            <Link to="/minhasReservas">
+                                                Minhas Reservas
+                                            </Link>
+                                        </DropdownItem>
+                                        <DropdownItem>Settings</DropdownItem>
+                                        <DropdownItem>Earnings</DropdownItem>
+                                        <DropdownDivider />
+                                        <DropdownItem>
+                                            <span className="cursor-pointer" onClick={clienteSair}>Sair</span>
+                                        </DropdownItem>
+                                    </Dropdown>
                                 </>
                                 :
                                 <Link to="/login" className="block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
