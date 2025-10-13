@@ -1,5 +1,5 @@
-import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { useForm } from "react-hook-form";
 import type { FerramentaType } from "../utils/FerramentaType";
 
 const apiUrl = import.meta.env.VITE_API_URL
@@ -13,7 +13,11 @@ type InputPesquisaProps = {
 }
 
 export function InputPesquisa({ setFerramentas }: InputPesquisaProps) {
-    const { register, handleSubmit, reset } = useForm<Inputs>()
+    const { 
+        register, 
+        handleSubmit, 
+        //reset 
+    } = useForm<Inputs>()
 
     async function enviaPesquisa(data: Inputs) {
         // alert(data.termo)
@@ -28,12 +32,12 @@ export function InputPesquisa({ setFerramentas }: InputPesquisaProps) {
         setFerramentas(dados)
     }
 
-    async function mostraDestaques() {
-        const response = await fetch(`${apiUrl}/ferramentas`)
-        const dados = await response.json()
-        reset({ termo: "" })
-        setFerramentas(dados)
-    }
+    // async function mostraDestaques() {
+    //     const response = await fetch(`${apiUrl}/ferramentas`)
+    //     const dados = await response.json()
+    //     reset({ termo: "" })
+    //     setFerramentas(dados)
+    // }
 
     return (
         <div className="flex mx-auto max-w-5xl mt-3">
@@ -53,10 +57,10 @@ export function InputPesquisa({ setFerramentas }: InputPesquisaProps) {
                     </button>
                 </div>
             </form>
-            <button type="button" className="ms-3 mt-2 focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+            {/* <button type="button" className="ms-3 mt-2 focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
                     onClick={mostraDestaques}>
                 Exibir Destaques
-            </button>
+            </button> */}
         </div>
     )
 }
