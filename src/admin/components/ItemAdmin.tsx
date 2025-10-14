@@ -13,6 +13,12 @@ type listaAdminProps = {
 
 const apiUrl = import.meta.env.VITE_API_URL
 
+// const niveis = [
+//   { id: "ADMIN", nome: "ADMIN" },
+//   { id: "MODERADOR", nome: "MODERADOR" },
+//   { id: "COMUM", nome: "COMUM" }
+// ]
+
 export default function ItemAdmin({ adminLinha, admins, setAdmins }: listaAdminProps) {
   const { admin } = useAdminStore()
 
@@ -79,7 +85,6 @@ export default function ItemAdmin({ adminLinha, admins, setAdmins }: listaAdminP
     }
 
   }
-
 
   return (
     <tr key={adminLinha.id} className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">

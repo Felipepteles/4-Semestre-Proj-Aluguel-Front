@@ -135,7 +135,7 @@ export default function CompleteCadCliente() {
                 <div className="w-full">
                   <div>
                     <label htmlFor="estado" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Estado:</label>
-                    <select id="categoriaId"
+                    <select id="estadoId"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required
                       {...register("estado")}
                     >
@@ -154,7 +154,7 @@ export default function CompleteCadCliente() {
                   </div>
                   <div>
                     <label htmlFor="tel2" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefone 2:</label>
-                    <input type="text" id="tel2" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ex.: 53999999999" required
+                    <input type="text" id="tel2" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ex.: 53999999999"
                       {...register("tel2")} />
                   </div>
                 </div>
