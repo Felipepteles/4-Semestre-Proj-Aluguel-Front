@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom"
-import { useNavigate } from "react-router-dom"
-import { useClienteStore } from "../context/ClienteContext"
-import { Avatar, Dropdown, DropdownDivider, DropdownHeader, DropdownItem } from "flowbite-react";
-import { Button, Modal, ModalBody, ModalHeader } from "flowbite-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useClienteStore } from "../context/ClienteContext";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { Button, Modal, ModalBody, ModalHeader } from "flowbite-react";
+import { Avatar, Dropdown, DropdownDivider, DropdownHeader, DropdownItem } from "flowbite-react";
 
 
 export default function Titulo() {

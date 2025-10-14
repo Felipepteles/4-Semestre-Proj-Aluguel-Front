@@ -63,36 +63,36 @@ export default function AdminDashboard() {
 
       <div className="w-2/3 flex justify-between mx-auto mb-5">
         <div className="border-blue-600 border rounded p-6 w-1/3 me-3">
-          <span className="bg-blue-100 text-blue-800 text-xl text-center font-bold mx-auto block px-2.5 py-5 rounded dark:bg-blue-900 dark:text-blue-300">
+          <span className="bg-blue-100 text-blue-800 text-xl text-center font-bold mx-auto block px-2.5 py-2 rounded dark:bg-blue-900 dark:text-blue-300">
             {dados.clientes}</span>
           <p className="font-bold mt-2 text-center">Nº Clientes</p>
         </div>
         <div className="border-red-600 border rounded p-6 w-1/3 me-3">
-          <span className="bg-red-100 text-red-800 text-xl text-center font-bold mx-auto block px-2.5 py-5 rounded dark:bg-red-900 dark:text-red-300">
+          <span className="bg-red-100 text-red-800 text-xl text-center font-bold mx-auto block px-2.5 py-2 rounded dark:bg-red-900 dark:text-red-300">
             {dados.ferramentas}</span>
           <p className="font-bold mt-2 text-center">Nº Ferramentas</p>
         </div>
         <div className="border-green-600 border rounded p-6 w-1/3">
-          <span className="bg-green-100 text-green-800 text-xl text-center font-bold mx-auto block px-2.5 py-5 rounded dark:bg-green-900 dark:text-green-300">
+          <span className="bg-green-100 text-green-800 text-xl text-center font-bold mx-auto block px-2.5 py-2 rounded dark:bg-green-900 dark:text-green-300">
             {dados.reservas}</span>
           <p className="font-bold mt-2 text-center">Nº Reservas</p>
         </div>
       </div>
 
       <div className="div-graficos">
-        <svg viewBox="30 55 400 400">
+        <svg className='flex items-baseline justify-center' viewBox="30 55 400 400">
           <VictoryPie
             standalone={false}
-            width={400}
+            width={365}
             height={400}
             data={listaFerramentasMarca}
-            innerRadius={50}
+            innerRadius={0}
             labelRadius={80}
-            theme={VictoryTheme.clean}
+            theme={VictoryTheme.material}
             style={{
               labels: {
-                fontSize: 10,
-                fill: "#fff",
+                fontSize: 9,
+                fill: "#000000",
                 fontFamily: "Arial",
                 fontWeight: "bold"
               }
@@ -102,29 +102,29 @@ export default function AdminDashboard() {
             textAnchor="middle"
             style={{
               fontSize: 12,
-              fill: "#f00",
+              fill: "#000000",
               fontFamily: "Arial",
-              fontWeight: "bold"
+              fontWeight: "bold",
             }}
-            x={200}
-            y={200}
-            text={["Ferramentas", "por Marca"]}
+            x={300}
+            y={60}
+            text={["Ferramentas por Marca"]}
           />
         </svg>
 
-        <svg viewBox="30 55 400 400">
+        <svg className='flex items-baseline justify-center' viewBox="30 55 400 400">
           <VictoryPie
             standalone={false}
-            width={400}
+            width={365}
             height={400}
             data={listaClientesCidade}
-            innerRadius={50}
+            innerRadius={0}
             labelRadius={80}
-            theme={VictoryTheme.clean}
+            theme={VictoryTheme.material}
             style={{
               labels: {
-                fontSize: 10,
-                fill: "#fff",
+                fontSize: 9,
+                fill: "#000000",
                 fontFamily: "Arial",
                 fontWeight: "bold"
               }
@@ -134,16 +134,15 @@ export default function AdminDashboard() {
             textAnchor="middle"
             style={{
               fontSize: 12,
-              fill: "#f00",
+              fill: "#000000",
               fontFamily: "Arial",
               fontWeight: "bold"
             }}
-            x={200}
-            y={200}
-            text={["Clientes", "por Cidade"]}
+            x={300}
+            y={60}
+            text={["Clientes por Cidade"]}
           />
         </svg>
-
       </div>
     </div>
   )
