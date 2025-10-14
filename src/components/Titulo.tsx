@@ -41,7 +41,7 @@ export default function Titulo() {
             <li className="flex items-center gap-4">
               {cliente.id ?
                 <>
-                  <span className="block text-sm">{cliente.nome}</span>
+                  <span className="block text-sm text-white">{cliente.nome}</span>
                   <Dropdown
                     label={<Avatar alt="User settings" img="/user.svg" className="cursor-pointer" rounded />}
                     arrowIcon={false}

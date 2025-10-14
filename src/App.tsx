@@ -31,7 +31,7 @@ export default function App() {
     <>
       <InputPesquisa setFerramentas={setFerramentas} limpar={limpaPesquisa} />
       <div className="max-w-7xl mx-auto">
-        <h1 className="mb-4 text-4xl font-noto p-3 font-bold leading-none tracking-tight text-gray-800 md:text-4xl lg:text-6xl dark:text-white">
+        <h1 className="[text-shadow:_0_2px_4px_rgba(0,0,0,0.5)] mb-4 text-4xl font-noto p-3 font-bold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-6xl dark:text-white">
           Ferramentas <span className="underline underline-offset-3 decoration-8 decoration-blue-700 dark:decoration-blue-600">disponíveis</span>
         </h1>
         <div className="flex gap-3 flex-wrap justify-around">

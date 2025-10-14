@@ -67,7 +67,7 @@ export default function Detalhes() {
 
   return (
     <>
-      <section className="flex mt-6 mx-auto flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-5xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+      <section className="flex mt-6 mx-auto flex-col items-center bg-white border border-gray-200 rounded-lg md:flex-row md:max-w-5xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 shadow-lg shadow-gray-500/70">
         <img className="object-cover w-full rounded-t-lg h-96 md:h-2/4 md:w-2/4 md:rounded-none md:rounded-s-lg"
           src={ferramenta?.foto} alt="Foto da Ferramenta" />
         <div className="flex flex-col justify-between p-4 leading-normal">

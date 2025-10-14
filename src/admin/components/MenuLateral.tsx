@@ -18,55 +18,55 @@ export function MenuLateral() {
   }
 
   return (
-    <aside id="default-sidebar" className="fixed mt-24 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-      <div className="h-full px-3 py-4 overflow-y-auto bg-blue-300 dark:bg-gray-800">
-        <ul className="space-y-2 font-medium">
+    <aside id="default-sidebar" className="fixed mt-24 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0  shadow-md shadow-gray-500/70" aria-label="Sidebar">
+      <div className="h-full px-3 py-4 overflow-y-auto bg-blue-600/40 dark:bg-gray-800">
+        <ul className="space-y-5 font-medium">
           <li>
-            <Link to="/admin" className="flex items-center p-2">
+            <Link to="/admin" className="flex items-center p-2 hover:bg-gray-400/30 rounded-full">
               <span className="h-5 text-gray-600 text-2xl">
-                <BiSolidDashboard />
+                <BiSolidDashboard className="pb-1"/>
               </span>
-              <span className="ms-2 mt-1">Visão Geral</span>
+              <span className="ms-2 mt-auto">Visão Geral</span>
             </Link>
           </li>
           <li>
-            <Link to="/admin/cadAdmin" className="flex items-center p-2 cursor-pointer">
+            <Link to="/admin/cadAdmin" className="flex items-center p-2 cursor-pointer hover:bg-gray-400/30 rounded-full">
               <span className="h-5 text-gray-600 text-2xl">
-                <FaRegUser />
+                <FaRegUser className="pb-1" />
               </span>
-              <span className="ms-2 mt-1">Controle de Admins</span>
+              <span className="ms-2 mt-auto">Controle de Admins</span>
             </Link>
           </li>
           <li>
-            <Link to="/admin/clientes" className="flex items-center p-2">
+            <Link to="/admin/clientes" className="flex items-center p-2 hover:bg-gray-400/30 rounded-full">
               <span className="h-5 text-gray-600 text-2xl">
-                <FaUsers />
+                <FaUsers className="pb-1" />
               </span>
-              <span className="ms-2 mt-1">Controle de Clientes</span>
+              <span className="ms-2 mt-auto">Controle de Clientes</span>
             </Link>
           </li>
           <li>
-            <Link to="/admin/ferramentas" className="flex items-center p-2">
+            <Link to="/admin/ferramentas" className="flex items-center p-2 hover:bg-gray-400/30 rounded-full">
               <span className="h-5 text-gray-600 text-2xl">
-                <FaTools />
+                <FaTools className="pb-1" />
               </span>
-              <span className="ms-2 mt-1">Controle de Ferramentas</span>
+              <span className="ms-2 mt-auto">Controle de Ferramentas</span>
             </Link>
           </li>
           <li>
-            <Link to="/admin/reservas" className="flex items-center p-2 cursor-pointer">
+            <Link to="/admin/reservas" className="flex items-center p-2 cursor-pointer hover:bg-gray-400/30 rounded-full">
               <span className="h-5 text-gray-600 text-2xl">
-                <BsCashCoin />
+                <BsCashCoin className="pb-1" />
               </span>
-              <span className="ms-2 mt-1">Controle de Reservas</span>
+              <span className="ms-2 mt-auto">Controle de Reservas</span>
             </Link>
           </li>
           <li>
-            <span className="flex items-center p-2 cursor-pointer">
+            <span className="flex items-center p-2 cursor-pointer hover:bg-gray-400/30 rounded-full">
               <span className="h-5 text-gray-600 text-2xl">
-                <IoExitOutline />
+                <IoExitOutline className="pb-1" />
               </span>
-              <span className="ms-2 mt-1" onClick={adminSair}>Sair do Sistema</span>
+              <span className="ms-2 mt-auto" onClick={adminSair}>Sair do Sistema</span>
             </span>
           </li>
         </ul>

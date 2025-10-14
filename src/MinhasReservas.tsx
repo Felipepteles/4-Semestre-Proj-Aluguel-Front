@@ -61,8 +61,8 @@ export default function Reservas() {
 
   return (
     <section className="max-w-7xl mx-auto">
-      <h1 className="mb-6 mt-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-5xl dark:text-white">
-        Listagem de <span className="underline underline-offset-3 decoration-8 decoration-orange-400 dark:decoration-orange-600">Minhas reservas</span></h1>
+      <h1 className="[text-shadow:_0_2px_4px_rgba(0,0,0,0.5)] mb-4 text-4xl font-noto py-3 font-bold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-6xl dark:text-white">
+        Minhas <span className="underline underline-offset-3 decoration-8 decoration-blue-700 dark:decoration-blue-600">reservas</span></h1>
 
       {reservas.length == 0 ?
         <h2 className="mb-4 mt-10 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white">
@@ -72,30 +72,14 @@ export default function Reservas() {
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" className="px-6 py-3">
-                Foto
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Ferramenta
-              </th>
-              <th scope="col" className="px-6 py-3">
-                De
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Até
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Descrição
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Status
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Diária
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Valor total
-              </th>
+              <th scope="col" className="px-6 py-3"> Foto </th>
+              <th scope="col" className="px-6 py-3"> Ferramenta </th>
+              <th scope="col" className="px-6 py-3"> De </th>
+              <th scope="col" className="px-6 py-3"> Até </th>
+              <th scope="col" className="px-6 py-3"> Descrição </th>
+              <th scope="col" className="px-6 py-3"> Status </th>
+              <th scope="col" className="px-6 py-3"> Diária </th>
+              <th scope="col" className="px-6 py-3"> Valor total </th>
             </tr>
           </thead>
           <tbody>

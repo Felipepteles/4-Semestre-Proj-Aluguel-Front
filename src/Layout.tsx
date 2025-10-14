@@ -6,10 +6,20 @@ import { Rodape } from './components/Footer.tsx'
 export default function Layout() {
   return (
     <>
-      <Titulo />
+      {/* <Titulo />
       <Outlet />
       <Toaster richColors position="top-center" />
-      <Rodape />
+      <Rodape /> */}
+      <div className="flex flex-col min-h-screen">
+        <Titulo />
+        
+        <main className="flex-grow">
+          <Outlet />
+        </main>
+
+        <Toaster richColors position="top-center" />
+        <Rodape />
+      </div>
     </>
   )
 }

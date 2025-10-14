@@ -61,7 +61,7 @@ export default function AdminNovoAdmin() {
   return (
     <>
       <h1 className="mb-4 mt-24 text-2xl font-bold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white me-56">
-        Inclusão de Administradore do Sistema
+        Inclusão de Administrador do Sistema
       </h1>
 
       <form className="max-w-xl mx-auto" onSubmit={handleSubmit(incluirAdmin)}>
@@ -107,7 +107,7 @@ export default function AdminNovoAdmin() {
             />
           </div>
         </div>
-        <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 hover:shadow-md hover:shadow-gray-500/60 cursor-pointer">
           Incluir</button>
       </form>
     </>
