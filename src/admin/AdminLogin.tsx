@@ -29,7 +29,7 @@ export default function AdminLogin() {
     })
 
     // console.log(response)
-    if (response.status == 200) {
+    if (response.ok) {
       const admin = await response.json()
       logaAdmin(admin)
       navigate("/admin", { replace: true })
