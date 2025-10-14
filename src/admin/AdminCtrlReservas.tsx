@@ -45,6 +45,9 @@ export default function AdminReservas() {
                 Descrição
               </th>
               <th scope="col" className="px-6 py-3">
+                Data da Reserva
+              </th>
+              <th scope="col" className="px-6 py-3">
                 Data Início
               </th>
               <th scope="col" className="px-6 py-3">

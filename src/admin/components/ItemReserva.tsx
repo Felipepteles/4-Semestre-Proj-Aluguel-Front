@@ -1,5 +1,6 @@
 import { TiDeleteOutline } from "react-icons/ti"
-import { FaRegStar } from "react-icons/fa"
+import { FaCheck } from "react-icons/fa"
+import { toast } from "sonner"
 
 import type { ReservaType } from "../../utils/ReservaType"
 import { useAdminStore } from "../context/AdminContext"
@@ -27,36 +28,40 @@ export default function ItemRserva({ reserva, reservas, setReservas }: listaRese
         },
       )
 
-      if (response.status == 200) {
-        const reservas2 = reservas.filter(x => x.id != reserva.id)
+      if (response.ok) {
+        const reservas2 = reservas.filter(r => r.id != reserva.id)
         setReservas(reservas2)
-        alert("Reserva excluída com sucesso")
+        toast.success("Reserva excluída com sucesso")
       } else {
-        alert("Erro... Reserva não foi excluída")
+        toast.error("Erro... Reserva não foi excluída")
       }
     }
   }
 
   async function alterarStatus() {
 
-    const response = await fetch(`${apiUrl}/reservas/reservar/${reserva.id}`,
+    const response = await fetch(`${apiUrl}/reservas/${reserva.id}`,
       {
         method: "PATCH",
         headers: {
           "Content-type": "application/json",
           Authorization: `Bearer ${admin.token}`
         },
+        body: JSON.stringify({
+          status: "confirmado"
+        })
       },
     )
 
-    if (response.status == 200) {
-      const reservas2 = reservas.map(x => {
-        if (x.id == reserva.id) {
-          return { ...x }
+    if (response.ok) {
+      const reservas2 = reservas.map(reserva => {
+        if (reserva.id == reserva.id) {
+          return { ...reserva }
         }
-        return x
+        return reserva
       })
       setReservas(reservas2)
+      toast.success("Reserva Confirmada")
     }
   }
 
@@ -76,10 +81,13 @@ export default function ItemRserva({ reserva, reservas, setReservas }: listaRese
         {reserva.descricao}
       </td>
       <td className={`px-6 py-4`}>
-        {reserva.dataInicio}
+        {new Date(reserva.createdAt).toLocaleDateString("pt-BR")}
       </td>
       <td className={`px-6 py-4`}>
-        {reserva.dataFim}
+        {new Date(reserva.dataInicio).toLocaleDateString("pt-BR")}
+      </td>
+      <td className={`px-6 py-4`}>
+        {new Date(reserva.dataFim).toLocaleDateString("pt-BR")}
       </td>
       <td className={`px-6 py-4`}>
         {reserva.status}
@@ -88,10 +96,12 @@ export default function ItemRserva({ reserva, reservas, setReservas }: listaRese
         {Number(reserva.valor).toLocaleString("pt-br", { minimumFractionDigits: 2 })}
       </td>
       <td className="px-6 py-4">
-        <TiDeleteOutline className="text-3xl text-red-600 inline-block cursor-pointer" title="Excluir"
-          onClick={excluirReserva} />&nbsp;
-        <FaRegStar className="text-3xl text-yellow-600 inline-block cursor-pointer" title="Destacar"
-          onClick={alterarStatus} />
+        <div className="flex">
+          <TiDeleteOutline className="text-3xl text-red-600 inline cursor-pointer" title="Excluir"
+            onClick={excluirReserva} />
+          <FaCheck className="text-3xl text-green-600 inline cursor-pointer" title="Aceitar"
+            onClick={alterarStatus} />
+        </div>
       </td>
     </tr>
   )

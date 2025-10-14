@@ -3,12 +3,13 @@ import type { FerramentaType } from "./FerramentaType"
 
 export type ReservaType = {
     id: number
-    ferramentaId: number
     ferramenta: FerramentaType
-    clienteId: string
     cliente: ClienteType
-    descricao: string
+    ferramentaId: number
     dataInicio: string
+    clienteId: string
+    descricao: string
+    createdAt: string
     dataFim: string
     status: string
     valor: number

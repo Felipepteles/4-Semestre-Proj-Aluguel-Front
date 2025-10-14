@@ -28,6 +28,9 @@ export default function Detalhes() {
   useEffect(() => {
     async function buscaDados() {
       const response = await fetch(`${apiUrl}/ferramentas/${params.ferramentaId}`)
+      if (response.status == 401) {
+        localStorage.removeItem("clienteKey")
+      }
       const dados = await response.json()
       setFerramenta(dados)
     }
@@ -50,6 +53,9 @@ export default function Detalhes() {
         dataFim: dataFim
       })
     })
+    if (response.status == 401) {
+      localStorage.removeItem("clienteKey")
+    }
 
     if (response.status == 201) {
       toast.success("Obrigado. Sua proposta foi enviada. Aguarde retorno")

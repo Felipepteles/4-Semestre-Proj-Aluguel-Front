@@ -6,7 +6,7 @@ import App from './App.tsx';
 import Login from './Login.tsx';
 import Detalhes from './Detalhes.tsx';
 import CadCliente from './CadCliente.tsx';
-//import CompleteCadCliente from './CompleteCadCliente.tsx';
+import CompleteCadCliente from './CompleteCadCliente.tsx';
 import MinhasReservas from './MinhasReservas.tsx';
 import AdminLogin from './admin/AdminLogin.tsx';   
 import AdminLayout from './admin/AdminLayout.tsx';
@@ -48,7 +48,7 @@ const rotas = createBrowserRouter([
       { path: 'cadCliente', element: <CadCliente /> },
       { path: 'minhasReservas', element: <MinhasReservas /> },
       { path: 'detalhes/:ferramentaId', element: <Detalhes /> },
-      //{ path: 'completeCadCliente:clienteId', element: <CompleteCadCliente /> }
+      { path: 'completeCadCliente/:clienteId', element: <CompleteCadCliente /> }
     ],
   },
 ])

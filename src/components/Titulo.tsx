@@ -1,75 +1,96 @@
 import { Link } from "react-router-dom"
-import { useClienteStore } from "../context/ClienteContext"
 import { useNavigate } from "react-router-dom"
+import { useClienteStore } from "../context/ClienteContext"
 import { Avatar, Dropdown, DropdownDivider, DropdownHeader, DropdownItem } from "flowbite-react";
+import { Button, Modal, ModalBody, ModalHeader } from "flowbite-react";
+import { useState } from "react";
+import { HiOutlineExclamationCircle } from "react-icons/hi";
 
 
 export default function Titulo() {
-    const { cliente, deslogaCliente } = useClienteStore()
-    const navigate = useNavigate()
+  const { cliente, deslogaCliente } = useClienteStore()
+  const navigate = useNavigate()
+  const [openModal, setOpenModal] = useState(false);
 
 
-    function clienteSair() {
-        if (confirm("Confirma saída do sistema?")) {
-            deslogaCliente()
-            if (localStorage.getItem("clienteKey")) {
-                localStorage.removeItem("clienteKey")
-            }
-            navigate("/login")
-        }
+  function clienteSair() {
+    deslogaCliente()
+    if (localStorage.getItem("clienteKey")) {
+      localStorage.removeItem("clienteKey")
     }
-    return (
-        <nav className="border-orange-500 bg-orange-400 dark:bg-orange-800 dark:border-orange-700">
-            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img src="/toolkit.svg" className="h-12" alt="Logo Caixa de Ferramentas" />
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                        Caixa de Ferramentas
-                    </span>
-                </Link>
-                <button data-collapse-toggle="navbar-solid-bg" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-solid-bg" aria-expanded="false">
-                    <span className="sr-only">Abrir Menu</span>
-                    <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
-                    </svg>
-                </button>
+    navigate("/login")
+  }
+  return (
+    <nav className="border-orange-500 bg-orange-400 dark:bg-orange-800 dark:border-orange-700">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+          <img src="/toolkit.svg" className="h-12" alt="Logo Caixa de Ferramentas" />
+          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+            Caixa de Ferramentas
+          </span>
+        </Link>
+        <button data-collapse-toggle="navbar-solid-bg" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-solid-bg" aria-expanded="false">
+          <span className="sr-only">Abrir Menu</span>
+          <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+          </svg>
+        </button>
 
-                <div className="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
-                    <ul className="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
-                        <li className="flex items-center gap-4">
-                            {cliente.id ?
-                                <>
-                                <span className="block text-sm">{cliente.nome}</span>
-                                    <Dropdown
-                                        label={<Avatar alt="User settings" img="/user.svg" className="cursor-pointer" rounded />}
-                                        arrowIcon={false}
-                                        inline
-                                    >
-                                        <DropdownHeader>
-                                            <span className="block truncate text-sm font-medium">{cliente.email}</span>
-                                        </DropdownHeader>
-                                        <DropdownItem>
-                                            <Link to="/minhasReservas">
-                                                Minhas Reservas
-                                            </Link>
-                                        </DropdownItem>
-                                        <DropdownItem>Settings</DropdownItem>
-                                        <DropdownItem>Earnings</DropdownItem>
-                                        <DropdownDivider />
-                                        <DropdownItem>
-                                            <span className="cursor-pointer" onClick={clienteSair}>Sair</span>
-                                        </DropdownItem>
-                                    </Dropdown>
-                                </>
-                                :
-                                <Link to="/login" className="block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                                    Identifique-se
-                                </Link>
-                            }
-                        </li>
-                    </ul>
-                </div>
+        <div className="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
+          <ul className="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
+            <li className="flex items-center gap-4">
+              {cliente.id ?
+                <>
+                  <span className="block text-sm">{cliente.nome}</span>
+                  <Dropdown
+                    label={<Avatar alt="User settings" img="/user.svg" className="cursor-pointer" rounded />}
+                    arrowIcon={false}
+                    inline
+                  >
+                    <DropdownHeader>
+                      <span className="block truncate text-sm font-medium">{cliente.email}</span>
+                    </DropdownHeader>
+                    <DropdownItem>
+                      <Link to="/minhasReservas">
+                        Minhas Reservas
+                      </Link>
+                    </DropdownItem>
+                    <DropdownItem>Settings</DropdownItem>
+                    <DropdownItem>Earnings</DropdownItem>
+                    <DropdownDivider />
+                    <DropdownItem>
+                      <span className="cursor-pointer" onClick={() => setOpenModal(true)}>Sair</span>
+                    </DropdownItem>
+                  </Dropdown>
+                </>
+                :
+                <Link to="/login" className="block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+                  Identifique-se
+                </Link>
+              }
+            </li>
+          </ul>
+        </div>
+        <Modal show={openModal} size="md" onClose={() => setOpenModal(false)} popup>
+          <ModalHeader />
+          <ModalBody>
+            <div className="text-center">
+              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
+              <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                Tem certeza que deseja sair?
+              </h3>
+              <div className="flex justify-center gap-4">
+                <Button color="red" onClick={() => { setOpenModal(false); clienteSair() }}>
+                  Sim, tenho certeza!
+                </Button>
+                <Button color="alternative" onClick={() => setOpenModal(false)}>
+                  Não, cancelar.
+                </Button>
+              </div>
             </div>
-        </nav>
-    )
+          </ModalBody>
+        </Modal>
+      </div>
+    </nav>
+  )
 }

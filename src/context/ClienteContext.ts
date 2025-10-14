@@ -7,8 +7,16 @@ type ClienteStore = {
     deslogaCliente: () => void
 }
 
+const initialState = (): ClienteType => {
+    const dadoSalvo = localStorage.getItem("clienteKey")
+    if (dadoSalvo) {
+        return JSON.parse(dadoSalvo)
+    }
+    return {} as ClienteType
+}
+
 export const useClienteStore = create<ClienteStore>((set) => ({
-    cliente: {} as ClienteType,
+    cliente: initialState(),
     logaCliente: (clienteLogado) => set({cliente: clienteLogado}),
     deslogaCliente: () => set({cliente: {} as ClienteType})
 }))

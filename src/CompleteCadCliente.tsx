@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { toast } from "sonner"
-import { useClienteStore } from "./context/ClienteContext"
 
 type Inputs = {
   logradouro: string
@@ -10,17 +9,51 @@ type Inputs = {
   cidade: string
   estado: string
   cep: number
-  tel1: number
-  tel2: number
+  tel1: string
+  tel2: string
   clienteId: string
 }
 
 const apiUrl = import.meta.env.VITE_API_URL
-const { cliente } = useClienteStore()
+
+const estados = [
+  { id: "AC", nome: "Acre" },
+  { id: "AL", nome: "Alagoas" },
+  { id: "AP", nome: "Amapá" },
+  { id: "AM", nome: "Amazonas" },
+  { id: "BA", nome: "Bahia" },
+  { id: "CE", nome: "Ceará" },
+  { id: "DF", nome: "Distrito Federal" },
+  { id: "ES", nome: "Espírito Santo" },
+  { id: "GO", nome: "Goiás" },
+  { id: "MA", nome: "Maranhão" },
+  { id: "MT", nome: "Mato Grosso" },
+  { id: "MS", nome: "Mato Grosso do Sul" },
+  { id: "MG", nome: "Minas Gerais" },
+  { id: "PA", nome: "Pará" },
+  { id: "PB", nome: "Paraíba" },
+  { id: "PR", nome: "Paraná" },
+  { id: "PE", nome: "Pernambuco" },
+  { id: "PI", nome: "Piauí" },
+  { id: "RJ", nome: "Rio de Janeiro" },
+  { id: "RN", nome: "Rio Grande do Norte" },
+  { id: "RS", nome: "Rio Grande do Sul" },
+  { id: "RO", nome: "Rondônia" },
+  { id: "RR", nome: "Roraima" },
+  { id: "SC", nome: "Santa Catarina" },
+  { id: "SP", nome: "São Paulo" },
+  { id: "SE", nome: "Sergipe" },
+  { id: "TO", nome: "Tocantins" }
+]
 
 export default function CompleteCadCliente() {
   const { register, handleSubmit } = useForm<Inputs>()
   const navigate = useNavigate()
+  const params = useParams()
+
+  const optionsEstado = estados.map(estado => (
+    <option key={estado.id} value={estado.id}>{estado.nome}</option>
+  ))
 
   async function editaCliente(data: Inputs) {
 
@@ -30,14 +63,17 @@ export default function CompleteCadCliente() {
         method: "POST",
         body: JSON.stringify({
           logradouro: data.logradouro,
-          num: data.num,
+          num: Number(data.num),
           bairro: data.bairro,
           cidade: data.cidade,
           estado: data.estado,
-          cep: data.cep,
-          clienteId: cliente.id
+          cep: Number(data.cep),
+          clienteId: params.clienteId
         })
       })
+    if (response.status == 401) {
+      localStorage.removeItem("clienteKey")
+    }
 
     const response2 = await
       fetch(`${apiUrl}/telefones`, {
@@ -46,9 +82,13 @@ export default function CompleteCadCliente() {
         body: JSON.stringify({
           tel1: data.tel1,
           tel2: data.tel2,
-          clienteId: cliente.id
+          clienteId: params.clienteId
         })
       })
+    if (response.status == 401) {
+      localStorage.removeItem("clienteKey")
+    }
+
 
     console.log(response, response2)
     if (response.status == 201 && response2.status == 201) {
@@ -91,8 +131,17 @@ export default function CompleteCadCliente() {
               </div>
               <div>
                 <label htmlFor="estado" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Estado:</label>
-                <input type="text" id="estado" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nome do Estado" required
-                  {...register("estado")} />
+                <select id="categoriaId"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required
+                  {...register("estado")}
+                >
+                  {optionsEstado}
+                </select>
+              </div>
+              <div>
+                <label htmlFor="cep" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CEP:</label>
+                <input type="text" id="cep" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número do CEP" required
+                  {...register("cep")} />
               </div>
               <div>
                 <label htmlFor="tel1" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefone 1:</label>

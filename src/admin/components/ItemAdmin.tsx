@@ -1,5 +1,6 @@
-import { TiDeleteOutline } from "react-icons/ti"
+import { toast } from "sonner"
 import { FaListOl } from "react-icons/fa6";
+import { TiDeleteOutline } from "react-icons/ti"
 import { useAdminStore } from "../context/AdminContext"
 
 import type { AdminType } from "../../utils/AdminType"
@@ -32,8 +33,8 @@ export default function ItemAdmin({ adminLinha, admins, setAdmins }: listaAdminP
         },
       )
 
-      if (response.status == 200) {
-        const admins2 = admins.filter(x => x.id != adminLinha.id)
+      if (response.ok) {
+        const admins2 = admins.filter(a => a.id != adminLinha.id)
         setAdmins(admins2)
         alert("Admin excluído com sucesso")
       } else {
@@ -47,30 +48,38 @@ export default function ItemAdmin({ adminLinha, admins, setAdmins }: listaAdminP
     const nivel = Number(prompt("Novo Nível do Admin?"))
 
     if (nivel < 1 || nivel > 5) {
-      alert("Erro... Nível deve ser entre 1 e 5")
+      toast.error("Erro... Nível deve ser entre 1 e 5")
       return
     }
 
-    const response = await fetch(`${apiUrl}/admins/nivel/${adminLinha.id}/${nivel}`,
+    const response = await fetch(`${apiUrl}/admins/${adminLinha.id}`,
       {
         method: "PATCH",
         headers: {
           "Content-type": "application/json",
           Authorization: `Bearer ${admin.token}`
         },
+        body: JSON.stringify({
+          nivel: nivel
+        })
       },
     )
 
-    if (response.status == 200) {
-      const admins2 = admins.map(x => {
-        if (x.id == adminLinha.id) {
-          return { ...x, nivel: nivel }
+    if (response.ok) {
+      const admins2 = admins.map(a => {
+        if (a.id == adminLinha.id) {
+          return { ...a, nivel: nivel }
         }
-        return x
+        return a
       })
       setAdmins(admins2)
+      toast.success("Nível Alterado com Sucesso")
+    } else {
+      toast.error("Erro... Nível não foi alterado")
     }
+
   }
+
 
   return (
     <tr key={adminLinha.id} className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">

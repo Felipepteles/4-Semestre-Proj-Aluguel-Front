@@ -8,21 +8,28 @@ const apiUrl = import.meta.env.VITE_API_URL
 export default function App() {
   const [ferramentas, setFerramentas] = useState<FerramentaType[]>([])
 
-  useEffect(() => {
-    async function buscaDados() {
-      const response = await fetch(`${apiUrl}/ferramentas`)
-      const dados = await response.json()
-      setFerramentas(dados)
+  async function buscaDados() {
+    const response = await fetch(`${apiUrl}/ferramentas`)
+    if (response.status == 401) {
+      localStorage.removeItem("clienteKey")
     }
+    const dados = await response.json()
+    setFerramentas(dados)
+  }
+  useEffect(() => {
     buscaDados()
   }, [])
 
-  const listaFerramentas = ferramentas.map( ferramenta => (
-    <CardFerramenta ferramenta={ferramenta} key={ferramenta.id}/>
+  const limpaPesquisa = () => {
+    setFerramentas([])
+    buscaDados()
+  }
+  const listaFerramentas = ferramentas.map(ferramenta => (
+    <CardFerramenta ferramenta={ferramenta} key={ferramenta.id} />
   ))
   return (
     <>
-      <InputPesquisa setFerramentas={setFerramentas} />
+      <InputPesquisa setFerramentas={setFerramentas} limpar={limpaPesquisa} />
       <div className="max-w-7xl mx-auto">
         <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
           Ferramentas <span className="underline underline-offset-3 decoration-8 decoration-orange-400 dark:decoration-orange-600">disponíveis</span>

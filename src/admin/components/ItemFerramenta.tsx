@@ -1,5 +1,6 @@
 import { TiDeleteOutline } from "react-icons/ti"
 import { FaRegStar } from "react-icons/fa"
+import { toast } from "sonner"
 
 import type { FerramentaType } from "../../utils/FerramentaType"
 import { useAdminStore } from "../context/AdminContext"
@@ -27,12 +28,12 @@ export default function ItemFerramenta({ ferramenta, ferramentas, setFerramentas
         },
       )
 
-      if (response.status == 200) {
+      if (response.ok) {
         const ferramentas2 = ferramentas.filter(x => x.id != ferramenta.id)
         setFerramentas(ferramentas2)
-        alert("Carro excluído com sucesso")
+        toast.success("Ferramenta excluída com sucesso")
       } else {
-        alert("Erro... Carro não foi excluído")
+        toast.error("Erro... Ferramenta não foi excluída")
       }
     }
   }
@@ -49,14 +50,15 @@ export default function ItemFerramenta({ ferramenta, ferramentas, setFerramentas
       },
     )
 
-    if (response.status == 200) {
-      const ferramentas2 = ferramentas.map(x => {
-        if (x.id == ferramenta.id) {
-          return { ...x }
+    if (response.ok) {
+      const ferramentas2 = ferramentas.map(ferramenta => {
+        if (ferramenta.id == ferramenta.id) {
+          return { ...ferramenta }
         }
-        return x
+        return ferramenta
       })
       setFerramentas(ferramentas2)
+      toast.success("Status Alterado com Sucesso")
     }
   }
 

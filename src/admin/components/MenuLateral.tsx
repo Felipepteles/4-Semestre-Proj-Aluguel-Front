@@ -1,9 +1,10 @@
 import { useAdminStore } from "../context/AdminContext"
 import { IoExitOutline } from "react-icons/io5"
 import { BiSolidDashboard } from "react-icons/bi"
-import { FaCarSide, FaRegUser, FaUsers } from "react-icons/fa6"
+import { FaRegUser, FaUsers } from "react-icons/fa6"
 import { BsCashCoin } from "react-icons/bs"
 import { Link, useNavigate } from "react-router-dom"
+import { FaTools } from "react-icons/fa"
 
 export function MenuLateral() {
   const navigate = useNavigate()
@@ -47,7 +48,7 @@ export function MenuLateral() {
           <li>
             <Link to="/admin/ferramentas" className="flex items-center p-2">
               <span className="h-5 text-gray-600 text-2xl">
-                <FaCarSide />
+                <FaTools />
               </span>
               <span className="ms-2 mt-1">Controle de Ferramentas</span>
             </Link>

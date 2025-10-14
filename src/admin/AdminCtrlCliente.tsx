@@ -42,7 +42,19 @@ export default function AdminCtrlCliente() {
                 CPF
               </th>
               <th scope="col" className="px-6 py-3">
-                Ações
+                Logradouro/Número
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Cidade/Estado
+              </th>
+              <th scope="col" className="px-6 py-3">
+                CEP
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Tel 1
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Tel 2
               </th>
             </tr>
           </thead>

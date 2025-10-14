@@ -33,7 +33,7 @@ export default function Login() {
       logaCliente(dados)
 
       if (data.manter) {
-        localStorage.setItem("clienteKey", dados.id)
+        localStorage.setItem("clienteKey", JSON.stringify(dados))
       } else {
         // se indicou que não quer permanecer logado e tem
         // uma chave (anteriormente) salva, remove-a
