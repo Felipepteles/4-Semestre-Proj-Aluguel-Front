@@ -1,20 +1,21 @@
+import './index.css'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
 
 import App from './App.tsx';
-import Login from './Login.tsx';
-import Detalhes from './Detalhes.tsx';
 import CadCliente from './CadCliente.tsx';
 import CompleteCadCliente from './CompleteCadCliente.tsx';
+import Detalhes from './Detalhes.tsx';
+import Login from './Login.tsx';
 import MinhasReservas from './MinhasReservas.tsx';
-import AdminLogin from './admin/AdminLogin.tsx';   
-import AdminLayout from './admin/AdminLayout.tsx';
+
 import AdminCtrlAdmin from './admin/AdminCtrlAdmin.tsx'; 
-import AdminNovoAdmin from './admin/AdminNovoAdmin.tsx';
-import AdminDashboard from './admin/AdminDashboard.tsx';    
 import AdminCtrlCliente from './admin/AdminCtrlCliente.tsx';
 import AdminCtrlReservas from './admin/AdminCtrlReservas.tsx';
+import AdminDashboard from './admin/AdminDashboard.tsx';    
+import AdminLayout from './admin/AdminLayout.tsx';
+import AdminLogin from './admin/AdminLogin.tsx';   
+import AdminNovoAdmin from './admin/AdminNovoAdmin.tsx';
 import AdminNovaFerramenta from './admin/AdminNovaFerramenta.tsx';
 import AdminCtrlFerramentas from './admin/AdminCtrlFerramentas.tsx';
 

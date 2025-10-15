@@ -4,5 +4,5 @@ export type AdminType = {
     email: string
     senha: string
     token: string
-    nivel: number
+    nivel: string
 }

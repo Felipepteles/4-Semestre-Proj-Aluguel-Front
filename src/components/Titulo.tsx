@@ -24,7 +24,7 @@ export default function Titulo() {
     <nav className="border-blue-800 bg-blue-700 dark:bg-blue-700 dark:border-blue-800 shadow-lg shadow-gray-500/70">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="/toolkit.svg" className="h-12" alt="Logo Caixa de Ferramentas" />
+          <img src="/logo.png" className="h-12" alt="Logo Caixa de Ferramentas" />
           <span className="text-shadow-lg text-shadow-gray-800/30 self-center font-noto text-4xl font-bold whitespace-nowrap dark:text-white text-white text-shadow-inner">
             Caixa de Ferramentas
           </span>

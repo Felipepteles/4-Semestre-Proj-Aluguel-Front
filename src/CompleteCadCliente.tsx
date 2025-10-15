@@ -81,7 +81,7 @@ export default function CompleteCadCliente() {
         method: "POST",
         body: JSON.stringify({
           tel1: data.tel1,
-          tel2: data.tel2,
+          tel2: data.tel2 ? data.tel2 : null,
           clienteId: params.clienteId
         })
       })

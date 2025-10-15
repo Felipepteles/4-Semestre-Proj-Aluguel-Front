@@ -44,10 +44,13 @@ export default function AdminFerramentas() {
                 Modelo da Ferramenta
               </th>
               <th scope="col" className="px-6 py-3">
+                Descrição
+              </th>
+              <th scope="col" className="px-6 py-3">
                 Marca
               </th>
               <th scope="col" className="px-6 py-3">
-                Ano
+                Categoria
               </th>
               <th scope="col" className="px-6 py-3">
                 Preço R$

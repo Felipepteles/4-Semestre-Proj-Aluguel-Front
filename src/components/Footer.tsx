@@ -8,7 +8,7 @@ export function Rodape() {
       <div className="w-full text-center">
         <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
           <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="/toolkit.svg" className="h-12" alt="Logo Caixa de Ferramentas" />
+            <img src="/logo.png" className="h-12" alt="Logo Caixa de Ferramentas" />
             <span className="text-shadow-lg text-shadow-gray-800/30 self-center font-noto text-2xl whitespace-nowrap dark:text-white text-white text-shadow-inner">
               Caixa de Ferramentas
             </span>

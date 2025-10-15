@@ -42,7 +42,7 @@ export default function AdminLogin() {
     <main className="max-w-screen-xl flex flex-col items-center mx-auto p-6">
       <div className="max-w-xl">
         <h1 className="text-5xl font-bold text-center my-8 flex items-center">
-          <img src="/toolkit.svg" alt="Revenda" style={{ width: 80 }} className="d-block" />
+          <img src="/logo.png" alt="Revenda" style={{ width: 80 }} className="d-block" />
           Caixa de Ferramentas
         </h1>
         <div className="max-w-md mx-auto">

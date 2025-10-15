@@ -1,8 +1,9 @@
 import { toast } from "sonner"
-import { useForm } from "react-hook-form"
+import { useForm, type FieldValues, type UseFormRegister } from "react-hook-form"
 // import { useState, useEffect } from "react"
 // import type { AdminType } from "../utils/AdminType"
 import { useAdminStore } from "./context/AdminContext"
+import SelectNivel from "./components/SelectNivel";
 
 const apiUrl = import.meta.env.VITE_API_URL
 
@@ -12,7 +13,7 @@ type Inputs = {
   senha: string
   senha2: string
   token: string
-  nivel: number
+  nivel: string
   adminId: string
 }
 
@@ -44,7 +45,7 @@ export default function AdminNovoAdmin() {
           email: data.email,
           senha: data.senha,
           token: data.token,
-          nivel: Number(data.nivel),
+          nivel: data.nivel,
           adminId: admin.id
         })
       },
@@ -97,17 +98,8 @@ export default function AdminNovoAdmin() {
             {...register("senha2")}
           />
         </div>
-        <div className="grid gap-6 mb-3 md:grid-cols-2">
-          <div className="mb-3">
-            <label htmlFor="nivel" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Nível</label>
-            <input type="number" id="nivel"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required
-              {...register("nivel")}
-            />
-          </div>
-        </div>
-        <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 hover:shadow-md hover:shadow-gray-500/60 cursor-pointer">
+        <SelectNivel register={register as unknown as UseFormRegister<FieldValues>} />
+        <button type="submit" className="text-white mt-4 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 hover:shadow-md hover:shadow-gray-500/60 cursor-pointer">
           Incluir</button>
       </form>
     </>
