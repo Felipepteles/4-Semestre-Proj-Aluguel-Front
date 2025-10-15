@@ -17,6 +17,7 @@ export default function Titulo() {
     if (localStorage.getItem("clienteKey")) {
       localStorage.removeItem("clienteKey")
     }
+    setConfirmModal(false)
     navigate("/")
   }
   return (
@@ -62,7 +63,6 @@ export default function Titulo() {
                         <span className="cursor-pointer" onClick={() => setConfirmModal(true)}>Sair</span>
                       </DropdownItem>
                     </Dropdown>
-                    <ConfirmModal title="Tem certeza que deseja sair do Sistema?" show={confirmModal} onClose={() => setConfirmModal(false)} onSuccess={clienteSair} />
                   </>
                   :
                   <Link to="/login" className="block py-2 px-3 md:p-0 text-white rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-700 md:hover:text-shadow-md md:hover:text-shadow-white/30 md:hover:font-bold  dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
@@ -74,6 +74,7 @@ export default function Titulo() {
           </div>
         </div>
       </nav>
+      <ConfirmModal title="Tem certeza que deseja sair do Sistema?" show={confirmModal} onClose={() => setConfirmModal(false)} onSuccess={clienteSair} />
     </>
   )
 }
