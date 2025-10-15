@@ -1,4 +1,5 @@
 import type { ClienteType } from "../../utils/ClienteType"
+import { formatCPF, formatCEP, formatTelefone } from "../../utils/Formatters"
 
 type listaClienteProps = {
   clienteLinha: ClienteType;
@@ -20,7 +21,7 @@ export default function ItemCliente({ clienteLinha }: listaClienteProps) {
         {clienteLinha.email}
       </td>
       <td className={`px-6 py-4`}>
-        {clienteLinha.cpf}
+        {formatCPF(clienteLinha.cpf)}
       </td>
       <td className={`px-6 py-4`}>
         {endereco?.logradouro + ", " + endereco?.num} 
@@ -29,13 +30,13 @@ export default function ItemCliente({ clienteLinha }: listaClienteProps) {
         {endereco?.cidade + "-" + endereco?.estado}
       </td>
       <td className={`px-6 py-4`}>
-        {endereco?.cep}
+        {formatCEP(String(endereco?.cep))}
       </td>
       <td className={`px-6 py-4`}>
-        {telefone?.tel1}
+        {formatTelefone(String(telefone?.tel1))}
       </td>
       <td className={`px-6 py-4`}>
-        {telefone?.tel2}
+        {formatTelefone(String(telefone?.tel2))}
       </td>
     </tr>
   )
