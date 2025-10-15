@@ -17,7 +17,7 @@ const apiUrl = import.meta.env.VITE_API_URL
 
 export default function ItemRserva({ reserva, reservas, setReservas }: listaReservaProps) {
   const { admin } = useAdminStore()
-  const [exclusaoModal, setExclusaoModal] = useState(false);
+  const [confirmModal, setConfirmModal] = useState(false);
 
   async function excluirReserva() {
     const response = await fetch(`${apiUrl}/reservas/${reserva.id}`,
@@ -100,13 +100,13 @@ export default function ItemRserva({ reserva, reservas, setReservas }: listaRese
         <td className="px-6 py-4">
           <div className="flex">
             <TiDeleteOutline className="text-3xl text-red-600 inline cursor-pointer" title="Excluir"
-              onClick={() => setExclusaoModal(true)} />
+              onClick={() => setConfirmModal(true)} />
             <FaCheck className="text-3xl text-green-600 inline cursor-pointer" title="Aceitar"
               onClick={alterarStatus} />
           </div>
         </td>
       </tr>
-      <ConfirmModal title="Tem certeza que deseja excluir a Reserva?" show={exclusaoModal} onClose={() => setExclusaoModal(false)} onSuccess={excluirReserva} />
+      <ConfirmModal title="Tem certeza que deseja excluir a Reserva?" show={confirmModal} onClose={() => setConfirmModal(false)} onSuccess={excluirReserva} />
     </>
   )
 }

@@ -29,7 +29,7 @@ export default function ItemAdmin({ adminLinha, admins, setAdmins }: listaAdminP
     register,
     handleSubmit
   } = useForm<Inputs>()
-  const [exclusaoModal, setExclusaoModal] = useState(false);
+  const [confirmModal, setConfirmModal] = useState(false);
 
   async function excluirAdmin() {
     if (!admin || admin.nivel == "ADMIN") {
@@ -102,7 +102,7 @@ export default function ItemAdmin({ adminLinha, admins, setAdmins }: listaAdminP
         </td>
         <td className="px-6 py-4">
           <TiDeleteOutline className="text-3xl text-red-600 inline-block cursor-pointer" title="Excluir"
-            onClick={() => setExclusaoModal(true)} />&nbsp;
+            onClick={() => setConfirmModal(true)} />&nbsp;
           <FaListOl className="text-3xl text-yellow-600 inline-block cursor-pointer" title="Alterar Nível"
             onClick={() => setOpenModal(true)} />
         </td>
@@ -121,7 +121,7 @@ export default function ItemAdmin({ adminLinha, admins, setAdmins }: listaAdminP
           </div>
         </ModalBody>
       </Modal>
-      <ConfirmModal title="Tem certeza que deseja excluir o Administrador?" show={exclusaoModal} onClose={() => setExclusaoModal(false)} onSuccess={excluirAdmin} />
+      <ConfirmModal title="Tem certeza que deseja excluir o Administrador?" show={confirmModal} onClose={() => setConfirmModal(false)} onSuccess={excluirAdmin} />
     </>
   )
 }

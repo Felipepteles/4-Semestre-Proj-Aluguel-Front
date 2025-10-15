@@ -2,15 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useClienteStore } from "../context/ClienteContext";
-import { HiOutlineExclamationCircle } from "react-icons/hi";
-import { Button, Modal, ModalBody, ModalHeader } from "flowbite-react";
 import { Avatar, Dropdown, DropdownDivider, DropdownHeader, DropdownItem } from "flowbite-react";
+import ConfirmModal from "../admin/components/ConfirmModal";
 
 
 export default function Titulo() {
   const { cliente, deslogaCliente } = useClienteStore()
   const navigate = useNavigate()
-  const [openModal, setOpenModal] = useState(false);
+  const [confirmModal, setConfirmModal] = useState(false);
 
 
   function clienteSair() {
@@ -59,7 +58,7 @@ export default function Titulo() {
                     <DropdownItem>Earnings</DropdownItem>
                     <DropdownDivider />
                     <DropdownItem>
-                      <span className="cursor-pointer" onClick={() => setOpenModal(true)}>Sair</span>
+                      <span className="cursor-pointer" onClick={() => setConfirmModal(true)}>Sair</span>
                     </DropdownItem>
                   </Dropdown>
                 </>
@@ -71,25 +70,7 @@ export default function Titulo() {
             </li>
           </ul>
         </div>
-        <Modal show={openModal} size="md" onClose={() => setOpenModal(false)} popup>
-          <ModalHeader />
-          <ModalBody>
-            <div className="text-center">
-              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
-              <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                Tem certeza que deseja sair?
-              </h3>
-              <div className="flex justify-center gap-4">
-                <Button color="red" onClick={() => { setOpenModal(false); clienteSair() }}>
-                  Sim, tenho certeza!
-                </Button>
-                <Button color="alternative" onClick={() => setOpenModal(false)}>
-                  Não, cancelar.
-                </Button>
-              </div>
-            </div>
-          </ModalBody>
-        </Modal>
+        <ConfirmModal title="Tem certeza que deseja sair do Sistema?" show={confirmModal} onClose={() => setConfirmModal(false)} onSuccess={clienteSair} />
       </div>
     </nav>
   )

@@ -16,7 +16,7 @@ const apiUrl = import.meta.env.VITE_API_URL
 
 export default function ItemFerramenta({ ferramenta, ferramentas, setFerramentas }: listaFerramentaProps) {
   
-  const [exclusaoModal, setExclusaoModal] = useState(false);
+  const [confirmModal, setConfirmModal] = useState(false);
   const { admin } = useAdminStore()
 
   async function excluirFerramenta() {
@@ -87,12 +87,12 @@ export default function ItemFerramenta({ ferramenta, ferramentas, setFerramentas
         </td>
         <td className="px-6 py-4">
           <TiDeleteOutline className="text-3xl text-red-600 inline-block cursor-pointer" title="Excluir"
-            onClick={() => setExclusaoModal(true)} />&nbsp;
+            onClick={() => setConfirmModal(true)} />&nbsp;
           <FaRegStar className="text-3xl text-yellow-600 inline-block cursor-pointer" title="Destacar"
             onClick={alterarDestaque} />
         </td>
       </tr>
-      <ConfirmModal title="Tem certeza que deseja excluir a Ferramenta?" show={exclusaoModal} onClose={() => setExclusaoModal(false)} onSuccess={excluirFerramenta} />
+      <ConfirmModal title="Tem certeza que deseja excluir a Ferramenta?" show={confirmModal} onClose={() => setConfirmModal(false)} onSuccess={excluirFerramenta} />
     </>
   )
 }

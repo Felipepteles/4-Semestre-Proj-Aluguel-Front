@@ -9,7 +9,7 @@ import ConfirmModal from "./ConfirmModal"
 import { useState } from "react"
 
 export function MenuLateral() {
-  const [exclusaoModal, setExclusaoModal] = useState(false);
+  const [confirmModal, setConfirmModal] = useState(false);
   const navigate = useNavigate()
   const { deslogaAdmin } = useAdminStore()
 
@@ -68,13 +68,13 @@ export function MenuLateral() {
                 <span className="h-5 text-gray-600 text-2xl">
                   <IoExitOutline className="pb-1" />
                 </span>
-                <span className="ms-2 mt-auto" onClick={() => setExclusaoModal(true)}>Sair do Sistema</span>
+                <span className="ms-2 mt-auto" onClick={() => setConfirmModal(true)}>Sair do Sistema</span>
               </span>
             </li>
           </ul>
         </div>
       </aside>
-      <ConfirmModal title="Tem certeza que deseja sair do Sistema?" show={exclusaoModal} onClose={() => setExclusaoModal(false)} onSuccess={adminSair} />
+      <ConfirmModal title="Tem certeza que deseja sair do Sistema?" show={confirmModal} onClose={() => setConfirmModal(false)} onSuccess={adminSair} />
     </>
   )
 }

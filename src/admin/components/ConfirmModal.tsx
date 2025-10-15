@@ -19,7 +19,7 @@ export default function ConfirmModal({ show, onClose, onSuccess, title}: Confirm
               {title}
             </h3>
             <div className="flex justify-center gap-4">
-              <Button className="cursor-pointer" color="blue" onClick={onSuccess}>
+              <Button className="cursor-pointer" color="red" onClick={onSuccess}>
                 Sim
               </Button>
               <Button className="cursor-pointer" color="alternative" onClick={onClose}>
