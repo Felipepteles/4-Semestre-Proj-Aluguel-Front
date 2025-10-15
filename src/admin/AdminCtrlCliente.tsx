@@ -16,7 +16,7 @@ export default function AdminCtrlCliente() {
     getClientes()
   }, [])
 
-  const listaClientes = clientes.map(cliente => (
+  const listaClientes = [...clientes].reverse().map(cliente => (
     <ItemCliente key={cliente.id} clienteLinha={cliente} clientes={clientes} setClientes={setClientes} />
   ))
 

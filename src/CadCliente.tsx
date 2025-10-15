@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form"
 import { Link, useNavigate } from "react-router-dom"
 import { toast } from "sonner"
+import { maskCPF } from "./utils/InputMasks"
 
 type Inputs = {
   nome: string
@@ -18,6 +19,11 @@ export default function CadCliente() {
 
   async function cadastraCliente(data: Inputs) {
 
+    const cleanedData = {
+      ...data,
+      cpf: data.cpf.replace(/\D/g, '')
+    }
+
     if (data.senha != data.senha2) {
       toast.error("Erro... Senha e Confirme Senha precisam ser iguais")
       return
@@ -29,7 +35,7 @@ export default function CadCliente() {
         method: "POST",
         body: JSON.stringify({
           nome: data.nome,
-          cpf: data.cpf,
+          cpf: cleanedData.cpf,
           email: data.email,
           senha: data.senha
         })
@@ -45,6 +51,12 @@ export default function CadCliente() {
     } else {
       toast.error("Erro... Não foi possível realizar o cadastro")
     }
+  }
+
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>, maskFunction: (value: string) => string) => {
+    const { value } = e.target
+    e.target.value = maskFunction(value)
+    return e
   }
 
   return (
@@ -70,7 +82,10 @@ export default function CadCliente() {
               <div>
                 <label htmlFor="cpf" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CPF:</label>
                 <input type="text" id="cpf" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Somente números" required
-                  {...register("cpf")} />
+                  {...register("cpf", {
+                    onChange: (e) => handleInput(e, maskCPF)
+                  })} 
+                  maxLength={14} />
               </div>
               <div>
                 <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Senha de Acesso:</label>

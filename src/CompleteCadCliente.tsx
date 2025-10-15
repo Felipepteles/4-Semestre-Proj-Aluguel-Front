@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form"
 import { useNavigate, useParams } from "react-router-dom"
+import { maskCEP, maskTelefone } from "./utils/InputMasks"
 import { toast } from "sonner"
 
 type Inputs = {
@@ -8,7 +9,7 @@ type Inputs = {
   bairro: string
   cidade: string
   estado: string
-  cep: number
+  cep: string
   tel1: string
   tel2: string
   clienteId: string
@@ -57,17 +58,26 @@ export default function CompleteCadCliente() {
 
   async function editaCliente(data: Inputs) {
 
+    const tel2Limpo = data.tel2 ? data.tel2.replace(/\D/g, '') : "";
+
+    const cleanedData = {
+      ...data,
+      cep: data.cep.replace(/\D/g, ''),
+      tel1: data.tel1.replace(/\D/g, ''),
+      tel2: tel2Limpo !== '' ? tel2Limpo : null
+    }
+
     const response = await
       fetch(`${apiUrl}/enderecos`, {
         headers: { "Content-Type": "application/json" },
         method: "POST",
         body: JSON.stringify({
-          logradouro: data.logradouro,
-          num: Number(data.num),
-          bairro: data.bairro,
-          cidade: data.cidade,
-          estado: data.estado,
-          cep: Number(data.cep),
+          logradouro: cleanedData.logradouro,
+          num: Number(cleanedData.num),
+          bairro: cleanedData.bairro,
+          cidade: cleanedData.cidade,
+          estado: cleanedData.estado,
+          cep: Number(cleanedData.cep),
           clienteId: params.clienteId
         })
       })
@@ -80,8 +90,8 @@ export default function CompleteCadCliente() {
         headers: { "Content-Type": "application/json" },
         method: "POST",
         body: JSON.stringify({
-          tel1: data.tel1,
-          tel2: data.tel2 ? data.tel2 : null,
+          tel1: cleanedData.tel1,
+          tel2: cleanedData.tel2,
           clienteId: params.clienteId
         })
       })
@@ -97,6 +107,12 @@ export default function CompleteCadCliente() {
     } else {
       toast.error("Erro... Não foi possível realizar o cadastro")
     }
+  }
+
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>, maskFunction: (value: string) => string) => {
+    const { value } = e.target
+    e.target.value = maskFunction(value)
+    return e
   }
 
   return (
@@ -145,17 +161,26 @@ export default function CompleteCadCliente() {
                   <div>
                     <label htmlFor="cep" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CEP:</label>
                     <input type="text" id="cep" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Número do CEP" required
-                      {...register("cep")} />
+                      {...register("cep", {
+                        onChange: (e) => handleInput(e, maskCEP)
+                      })} 
+                      maxLength={9} />
                   </div>
                   <div>
                     <label htmlFor="tel1" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefone 1:</label>
                     <input type="text" id="tel1" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ex.: 53999999999" required
-                      {...register("tel1")} />
+                      {...register("tel1", {
+                        onChange: (e) => handleInput(e, maskTelefone)
+                      })} 
+                      maxLength={15} />
                   </div>
                   <div>
                     <label htmlFor="tel2" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefone 2:</label>
                     <input type="text" id="tel2" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ex.: 53999999999"
-                      {...register("tel2")} />
+                      {...register("tel2", {
+                        onChange: (e) => handleInput(e, maskTelefone)
+                      })} 
+                      maxLength={15} />
                   </div>
                 </div>
               </div>
