@@ -13,7 +13,7 @@ export default function Layout() {
       <div className="flex flex-col min-h-screen">
         <Titulo />
         
-        <main className="flex-grow">
+        <main className="flex-grow bg-slate-50">
           <Outlet />
         </main>
 
