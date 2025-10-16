@@ -32,7 +32,7 @@ export function MenuLateral() {
               </Link>
             </li>
             <li>
-              {admin.nivel != "COMUM" ?
+              {admin.nivel == "ADMIN" ?
                 <Link to="/admin/cadAdmin" className="flex items-center p-2 cursor-pointer hover:bg-gray-400/30 rounded-full">
                   <span className="h-5 text-gray-600 text-2xl">
                     <FaRegUser className="pb-1" />
