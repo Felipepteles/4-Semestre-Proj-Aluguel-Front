@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useClienteStore } from "../context/ClienteContext";
 import { Avatar, Dropdown, DropdownDivider, DropdownHeader, DropdownItem } from "flowbite-react";
-import ConfirmModal from "../admin/components/ConfirmModal";
+import ConfirmModal from "./ConfirmModal";
 
 
 export default function Titulo() {
@@ -57,7 +57,6 @@ export default function Titulo() {
                         </Link>
                       </DropdownItem>
                       <DropdownItem>Settings</DropdownItem>
-                      <DropdownItem>Earnings</DropdownItem>
                       <DropdownDivider />
                       <DropdownItem>
                         <span className="cursor-pointer" onClick={() => setConfirmModal(true)}>Sair</span>

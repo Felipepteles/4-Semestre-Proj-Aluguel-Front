@@ -2,7 +2,7 @@ import type { FerramentaType } from "../../utils/FerramentaType"
 import { useAdminStore } from "../context/AdminContext"
 import { TiDeleteOutline } from "react-icons/ti"
 import { FaRegStar } from "react-icons/fa"
-import ConfirmModal from "./ConfirmModal"
+import ConfirmModal from "../../components/ConfirmModal"
 import { useState } from "react";
 import { toast } from "sonner"
 

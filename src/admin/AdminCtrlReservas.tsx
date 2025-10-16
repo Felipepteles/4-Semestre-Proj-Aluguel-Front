@@ -16,7 +16,7 @@ export default function AdminReservas() {
     getReservas()
   }, [])
 
-  const listaReservas = reservas.map(reserva => (
+  const listaReservas = [...reservas].reverse().map(reserva => (
     <ItemReserva key={reserva.id} reserva={reserva} reservas={reservas} setReservas={setReservas} />
   ))
 
@@ -57,7 +57,7 @@ export default function AdminReservas() {
                 Status
               </th>
               <th scope="col" className="px-6 py-3">
-                Valor R$
+                Valor
               </th>
               <th scope="col" className="px-6 py-3">
                 Ações

@@ -5,7 +5,7 @@ import { FaRegUser, FaUsers } from "react-icons/fa6"
 import { BsCashCoin } from "react-icons/bs"
 import { Link, useNavigate } from "react-router-dom"
 import { FaTools } from "react-icons/fa"
-import ConfirmModal from "./ConfirmModal"
+import ConfirmModal from "../../components/ConfirmModal"
 import { useState } from "react"
 
 export function MenuLateral() {

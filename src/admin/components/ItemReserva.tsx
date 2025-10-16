@@ -4,7 +4,7 @@ import { toast } from "sonner"
 
 import type { ReservaType } from "../../utils/ReservaType"
 import { useAdminStore } from "../context/AdminContext"
-import ConfirmModal from "./ConfirmModal"
+import ConfirmModal from "../../components/ConfirmModal"
 import { useState } from "react"
 
 type listaReservaProps = {
@@ -55,11 +55,11 @@ export default function ItemRserva({ reserva, reservas, setReservas }: listaRese
     )
 
     if (response.ok) {
-      const reservas2 = reservas.map(reserva => {
-        if (reserva.id == reserva.id) {
-          return { ...reserva }
+      const reservas2 = reservas.map(r => {
+        if (r.id == reserva.id) {
+          return { ...reserva, status: "confirmado" }
         }
-        return reserva
+        return r
       })
       setReservas(reservas2)
       toast.success("Reserva Confirmada")
@@ -91,18 +91,20 @@ export default function ItemRserva({ reserva, reservas, setReservas }: listaRese
         <td className={`px-6 py-4`}>
           {new Date(reserva.dataFim).toLocaleDateString("pt-BR")}
         </td>
-        <td className={`px-6 py-4`}>
+        <td className={`px-6 py-4 font-bold text-transform: capitalize`}>
           {reserva.status}
         </td>
-        <td className={`px-6 py-4`}>
-          {Number(reserva.valor).toLocaleString("pt-br", { minimumFractionDigits: 2 })}
+        <td className={`py-4 text-right`}>
+          R$ {Number(reserva.valor).toLocaleString("pt-br", { minimumFractionDigits: 2 })}
         </td>
         <td className="px-6 py-4">
           <div className="flex">
             <TiDeleteOutline className="text-3xl text-red-600 inline cursor-pointer" title="Excluir"
               onClick={() => setConfirmModal(true)} />
+              {reserva.status == "pendente" ? 
             <FaCheck className="text-3xl text-green-600 inline cursor-pointer" title="Aceitar"
               onClick={alterarStatus} />
+              : null }
           </div>
         </td>
       </tr>

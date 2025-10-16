@@ -8,7 +8,7 @@ import { useForm, type FieldValues, type UseFormRegister } from "react-hook-form
 import type { AdminType } from "../../utils/AdminType"
 import SelectNivel from "./SelectNivel";
 import { useState } from "react";
-import ConfirmModal from "./ConfirmModal";
+import ConfirmModal from "../../components/ConfirmModal";
 
 type listaAdminProps = {
   adminLinha: AdminType;

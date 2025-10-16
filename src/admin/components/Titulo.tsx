@@ -4,7 +4,7 @@ import { useAdminStore } from "../context/AdminContext";
 
 export function Titulo() {
   const { admin } = useAdminStore()
-
+  
   return (
     <nav className="bg-blue-700 text-white font-noto border-blue-800 dark:bg-gray-900 flex flex-wrap justify-between fixed top-0 left-0 w-full z-50c shadow-lg shadow-gray-500/70">
       <div className="flex flex-wrap justify-between max-w-screen-xl p-4">

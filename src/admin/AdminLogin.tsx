@@ -7,6 +7,19 @@ import { useNavigate } from "react-router-dom"
 
 const apiUrl = import.meta.env.VITE_API_URL
 
+type AdminsResponse = {
+  email: string
+  id: string
+  nivel: string
+  nome: string
+  senha: string
+}
+
+type AdminResponse = {
+  admins: AdminsResponse
+  token: string
+}
+
 type Inputs = {
   email: string
   senha: string
@@ -30,8 +43,15 @@ export default function AdminLogin() {
 
     // console.log(response)
     if (response.ok) {
-      const admin = await response.json()
-      logaAdmin(admin)
+      const admin: AdminResponse = await response.json()
+      logaAdmin({
+        nome: admin.admins.nome,
+        email: admin.admins.email,
+        id: admin.admins.id,
+        nivel: admin.admins.nivel,
+        senha: admin.admins.senha,
+        token: admin.token
+      })
       navigate("/admin", { replace: true })
     } else if (response.status == 400) {
       toast.error("Erro... Login ou senha incorretos")
@@ -61,7 +81,7 @@ export default function AdminLogin() {
                 {...register("senha")}
                 required />
             </div>
-            <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Entrar</button>
+            <button type="submit" className="text-white cursor-pointer bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Entrar</button>
           </form>
         </div>
       </div>
