@@ -22,7 +22,7 @@ export default function Titulo() {
   }
   return (
     <>
-      <nav className="border-blue-800 bg-blue-700 dark:bg-blue-700 dark:border-blue-800 shadow-lg shadow-gray-500/70">
+      <nav className="border-blue-800 bg-gradient-to-r from-blue-700 to-blue-800 dark:border-blue-800 shadow-lg shadow-gray-500/70">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="/logo.png" className="h-12" alt="Logo Caixa de Ferramentas" />
