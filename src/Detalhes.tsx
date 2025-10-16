@@ -146,7 +146,7 @@ export default function Detalhes() {
                 </div>
               </div>
               <form onSubmit={handleSubmit(reservar)} className="space-y-4">
-                <div className="flex items-center mb-2">
+                <div className="flex items-center mb-2 max-w-full">
                   <Datepicker
                     title="Data de Início"
                     key="primeiro"
