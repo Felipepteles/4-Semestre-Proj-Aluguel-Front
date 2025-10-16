@@ -9,7 +9,7 @@ export default function Layout() {
       <div className="flex flex-col min-h-screen">
         <Titulo />
         
-        <main className="flex-grow bg-slate-400/50">
+        <main className="flex-grow">
           <Outlet />
         </main>
 
