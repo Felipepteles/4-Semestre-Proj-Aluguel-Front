@@ -148,6 +148,7 @@ export default function Detalhes() {
               <form onSubmit={handleSubmit(reservar)} className="space-y-4">
                 <div className="flex items-center mb-2">
                   <Datepicker
+                    title="Data de Início"
                     key="primeiro"
                     language="pt-BR"
                     value={dataInicio}
@@ -159,6 +160,7 @@ export default function Detalhes() {
                   />
                   <span className="mx-4 text-gray-500">até</span>
                   <Datepicker
+                    title="Data de Fim"
                     key={dataInicio?.toISOString()}
                     language="pt-BR"
                     value={dataFim}
