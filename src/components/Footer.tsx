@@ -4,7 +4,7 @@ import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-
 
 export function Rodape() {
   return (
-    <Footer container className="bg-blue-800 dark:bg-blue-700 mt-8 rounded-none shadow-[0_-8px_15px_-3px_rgba(107,114,128,0.7),_0_-2px_8px_-2px_rgba(107,114,128,0.7)]">
+    <Footer container className="bg-gradient-to-b from-blue-500 to-blue-800 mt-8 rounded-none shadow-[0_-8px_15px_-3px_rgba(107,114,128,0.7),_0_-2px_8px_-2px_rgba(107,114,128,0.7)]">
       <div className="w-full text-center">
         <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
           <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">

@@ -6,7 +6,7 @@ export function Titulo() {
   const { admin } = useAdminStore()
   
   return (
-    <nav className=" bg-gradient-to-t from-blue-500 to-blue-800 text-white font-noto border-blue-800 flex flex-wrap justify-between fixed z-1 top-0 left-0 w-full z-50c shadow-lg shadow-gray-500/70">
+    <nav className="bg-gradient-to-t from-blue-500 to-blue-800 text-white font-noto border-blue-800 flex flex-wrap justify-between fixed z-1 top-0 left-0 w-full z-50c shadow-lg shadow-gray-500/70">
       <div className="flex flex-wrap justify-between max-w-screen-xl p-4">
         <Link to="/admin" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="/logo.png" className="h-16" alt="Logo Caixa de Ferramentas" />
