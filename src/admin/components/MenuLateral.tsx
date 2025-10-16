@@ -12,6 +12,7 @@ export function MenuLateral() {
   const [confirmModal, setConfirmModal] = useState(false);
   const navigate = useNavigate()
   const { deslogaAdmin } = useAdminStore()
+  const { admin } = useAdminStore()
 
   function adminSair() {
     deslogaAdmin()
@@ -32,12 +33,21 @@ export function MenuLateral() {
               </Link>
             </li>
             <li>
-              <Link to="/admin/cadAdmin" className="flex items-center p-2 cursor-pointer hover:bg-gray-400/30 rounded-full">
-                <span className="h-5 text-gray-600 text-2xl">
-                  <FaRegUser className="pb-1" />
-                </span>
-                <span className="ms-2 mt-auto">Controle de Admins</span>
-              </Link>
+              {admin.nivel != "COMUM" ?
+                <Link to="/admin/cadAdmin" className="flex items-center p-2 cursor-pointer hover:bg-gray-400/30 rounded-full">
+                  <span className="h-5 text-gray-600 text-2xl">
+                    <FaRegUser className="pb-1" />
+                  </span>
+                  <span className="ms-2 mt-auto">Controle de Admins</span>
+                </Link>
+                :
+                <>
+                  <span className="h-5 text-gray-600 text-2xl">
+                    <FaRegUser className="pb-1" />
+                  </span>
+                  <span className="ms-2 mt-auto">Controle de Admins</span>
+                </>
+              }
             </li>
             <li>
               <Link to="/admin/clientes" className="flex items-center p-2 hover:bg-gray-400/30 rounded-full">
