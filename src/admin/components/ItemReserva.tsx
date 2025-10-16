@@ -1,7 +1,6 @@
 import { TiDeleteOutline } from "react-icons/ti"
 import { FaCheck } from "react-icons/fa"
 import { toast } from "sonner"
-
 import type { ReservaType } from "../../utils/ReservaType"
 import { useAdminStore } from "../context/AdminContext"
 import ConfirmModal from "../../components/ConfirmModal"
@@ -99,12 +98,17 @@ export default function ItemRserva({ reserva, reservas, setReservas }: listaRese
         </td>
         <td className="px-6 py-4">
           <div className="flex">
-            <TiDeleteOutline className="text-3xl text-red-600 inline cursor-pointer" title="Excluir"
-              onClick={() => setConfirmModal(true)} />
-              {reserva.status == "pendente" ? 
-            <FaCheck className="text-3xl text-green-600 inline cursor-pointer" title="Aceitar"
-              onClick={alterarStatus} />
-              : null }
+            {admin.nivel == "COMUM" ?
+              <TiDeleteOutline className="text-3xl text-red-600 inline cursor-not-allowed" title="Excluir" />
+              :
+              <TiDeleteOutline className="text-3xl text-red-600 inline cursor-pointer" title="Excluir"
+                onClick={() => setConfirmModal(true)} />
+            }
+
+            {reserva.status == "pendente" ?
+              <FaCheck className="text-3xl text-green-600 inline cursor-pointer" title="Aceitar"
+                onClick={alterarStatus} />
+              : null}
           </div>
         </td>
       </tr>

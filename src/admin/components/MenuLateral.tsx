@@ -11,8 +11,7 @@ import { useState } from "react"
 export function MenuLateral() {
   const [confirmModal, setConfirmModal] = useState(false);
   const navigate = useNavigate()
-  const { deslogaAdmin } = useAdminStore()
-  const { admin } = useAdminStore()
+  const { deslogaAdmin, admin } = useAdminStore()
 
   function adminSair() {
     deslogaAdmin()
@@ -41,12 +40,12 @@ export function MenuLateral() {
                   <span className="ms-2 mt-auto">Controle de Admins</span>
                 </Link>
                 :
-                <>
+                <div className="flex items-center p-2 cursor-not-allowed hover:bg-gray-400/30 rounded-full">
                   <span className="h-5 text-gray-600 text-2xl">
                     <FaRegUser className="pb-1" />
                   </span>
                   <span className="ms-2 mt-auto">Controle de Admins</span>
-                </>
+                </div>
               }
             </li>
             <li>
