@@ -37,8 +37,8 @@ Este projeto foi construído com uma abordagem de desenvolvimento moderna, utili
 | **Frontend** | **React** (com TypeScript) | Biblioteca principal para a construção da interface do usuário. |
 | **Design/UI** | **Flowbite** (para React) | Componentes de UI responsivos, incluindo o Datepicker para a reserva. |
 | **Gráficos** | **Victory** | Utilizado para renderizar os gráficos de desempenho no Admin Dashboard. |
-| **Gerenciamento de Estado** | *[Adicione Aqui (ex: Redux, Zustand)]* | Gerenciamento global do estado da aplicação. |
-| **Backend/API** | *[Adicione Aqui (ex: Node.js/Express, Python/Django)]* | API para gestão de usuários, inventário e persistência das reservas. |
+| **Gerenciamento de Estado** | **Zustand** | Gerenciamento global do estado da aplicação. |
+| **Backend/API** | **Node.js/Prisma** | API para gestão de usuários, inventário, persistência das reservas e ORM. |
 
 ---
 
