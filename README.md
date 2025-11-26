@@ -100,8 +100,8 @@ Distribuído sob a Licença **MIT** (ou **GPL**, **Apache**...). Consulte o arqu
 
 | Foto | Membro | Função | GitHub |
 | :--: | :--- | :--- | :--- |
-| <a href="https://github.com/T1P3R31R4"><img src="./docs/images/tiago.png" alt="Tiago Pereira" width="80"></a> | Tiago Pereira | Desenvolvedor Front-end | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/T1P3R31R4) |
-| <a href="https://github.com/Felipepteles"><img src="./docs/images/felipe.png" alt="Felipe Teles" width="80"></a> | Felipe Teles | Desenvolvedor Back-end | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Felipepteles) |
+| <a href="https://github.com/T1P3R31R4"><img src="./public/Tiago.png" alt="Tiago Pereira" width="80"></a> | Tiago Pereira | Desenvolvedor Front-end | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/T1P3R31R4) |
+| <a href="https://github.com/Felipepteles"><img src="./public/felipe.png" alt="Felipe Teles" width="80"></a> | Felipe Teles | Desenvolvedor Back-end | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Felipepteles) |
 </div>
 
 ### 🧱 Arquitetura e Backend
